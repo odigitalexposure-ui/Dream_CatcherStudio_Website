@@ -32,11 +32,11 @@ export default function Navbar() {
     <header
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-white/95 shadow-md backdrop-blur-md py-3"
-          : "bg-[#E9E6DD]/95 backdrop-blur-md border-b border-black/5 py-4"
+          ? "bg-white shadow-md py-3"
+          : "bg-[#E9E6DD] border-b border-black/10 py-4"
       }`}
     >
-      <nav className="max-w-7xl mx-auto px-6 md:px-8 lg:px-12 flex items-center justify-between">
+      <nav className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12 flex items-center justify-between">
         <button
           onClick={() => navigate("/")}
           className="flex items-center gap-3 group"
@@ -88,7 +88,7 @@ export default function Navbar() {
 
         {/* Mobile Menu Toggle */}
         <button
-          className="md:hidden p-2 rounded-lg text-[#333] hover:bg-black/5 transition-colors"
+          className="md:hidden p-2.5 rounded-lg text-[#333] hover:bg-black/5 active:bg-black/10 transition-colors"
           onClick={() => setOpen(true)}
           aria-label="Open menu"
         >
@@ -103,22 +103,24 @@ export default function Navbar() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex"
+            className="fixed inset-0 bg-black/75 z-[9999] flex"
+            onClick={() => setOpen(false)}
           >
             <motion.div
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
-              transition={{ type: "spring", stiffness: 300, damping: 30 }}
-              className="ml-auto w-4/5 max-w-sm bg-white h-full p-8 flex flex-col justify-between shadow-2xl"
+              transition={{ type: "spring", stiffness: 320, damping: 32 }}
+              className="ml-auto w-full sm:w-80 md:w-96 bg-[#F8F6F0] h-full p-6 sm:p-8 flex flex-col justify-between shadow-2xl z-[10000] border-l border-black/10 overflow-y-auto"
+              onClick={(e) => e.stopPropagation()}
             >
               <div>
-                <div className="flex items-center justify-between mb-8 pb-4 border-b border-gray-100">
+                <div className="flex items-center justify-between mb-8 pb-5 border-b border-black/10">
                   <div className="flex items-center gap-3">
                     <img
                       src={logoDark}
                       alt="logo"
-                      className="w-10 h-10 object-contain"
+                      className="w-10 h-10 object-contain rounded"
                     />
                     <span className="font-serif text-lg font-medium text-black uppercase tracking-wider">
                       Dream Catcher
@@ -126,24 +128,24 @@ export default function Navbar() {
                   </div>
                   <button
                     onClick={() => setOpen(false)}
-                    className="p-2 text-gray-500 hover:text-black rounded-full hover:bg-gray-100 transition-colors"
+                    className="p-2 text-black hover:bg-black/10 rounded-full transition-colors"
                     aria-label="Close menu"
                   >
                     <X className="w-6 h-6" />
                   </button>
                 </div>
 
-                <ul className="flex flex-col gap-6 text-sm uppercase tracking-[0.2em]">
+                <ul className="flex flex-col gap-3 text-sm uppercase tracking-[0.2em]">
                   {navLinks.map((n) => (
                     <li key={n.to}>
                       <NavLink
                         to={n.to}
                         onClick={() => setOpen(false)}
                         className={({ isActive }) =>
-                          `block py-2 transition-colors ${
+                          `block py-3 px-4 rounded-xl transition-all ${
                             isActive
-                              ? "text-black font-bold border-l-4 border-black pl-3"
-                              : "text-gray-600 hover:text-black pl-3"
+                              ? "bg-black text-white font-semibold shadow-md"
+                              : "text-[#333] hover:text-black hover:bg-black/5 font-medium"
                           }`
                         }
                       >
@@ -154,15 +156,15 @@ export default function Navbar() {
                 </ul>
               </div>
 
-              <div className="mt-8">
+              <div className="mt-8 pt-6 border-t border-black/10">
                 <button
                   onClick={() => {
                     setOpen(false);
                     navigate("/contact");
                   }}
-                  className="w-full py-4 rounded-lg bg-[#333] hover:bg-black text-white text-xs uppercase tracking-[0.25em] font-medium transition-colors shadow-md"
+                  className="w-full py-4 rounded-full bg-[#1E1E1E] hover:bg-[#B58A3C] text-white text-xs uppercase tracking-[0.25em] font-semibold transition-all duration-300 shadow-xl"
                 >
-                  Contact Us
+                  Book a Shoot / Contact
                 </button>
               </div>
             </motion.div>
