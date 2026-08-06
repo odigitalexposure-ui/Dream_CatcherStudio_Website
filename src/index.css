@@ -1,0 +1,22 @@
+﻿@import "tailwindcss";
+
+:root { --base-bg: #f5f4ef; --text-primary: #111827; --text-muted: #374151; }
+html, body, #root { height: 100%; }
+body {
+  background-color: var(--base-bg);
+  color: var(--text-primary);
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Font utilities */
+.font-heading { font-family: 'Playfair Display', serif; }
+.font-body { font-family: 'Inter', ui-sans-serif, system-ui, sans-serif; }
+
+/* Utility for glass navbar backdrop */
+.bg-glass { background-color: rgba(255,255,255,0.72); backdrop-filter: blur(8px); }
+
+html {
+  scroll-behavior: smooth;
+}
