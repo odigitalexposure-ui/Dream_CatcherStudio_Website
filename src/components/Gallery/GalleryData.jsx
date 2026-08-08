@@ -30,6 +30,7 @@ const CATEGORY_MAP = {
     "Graphic_Design_Manipulation",
     "Jewellery",
     "Videomaking",
+    "CREATIVE PRODUCT",
     "Creative_product",
   ],
   MATERNITY: ["Maternity"],
@@ -42,7 +43,7 @@ const CATEGORY_MAP = {
   VIDEOMAKING: ["Videomaking"],
   "GRAPHIC DESIGN": ["Graphic_Design_Manipulation"],
   "BEFORE & AFTER": ["Before_After"],
-  "CREATIVE PRODUCT": ["Creative_product"],
+  "CREATIVE PRODUCT": ["CREATIVE PRODUCT", "Creative_product"],
 };
 
 function detectCategory(folder) {
@@ -139,7 +140,17 @@ export function getGalleryAssets() {
 }
 
 export function filterGalleryAssets(items, category) {
-  if (!category || category === "ALL") return items;
+  if (!category || category === "ALL") {
+    // Exclude CREATIVE PRODUCT images from ALL section as requested
+    return items.filter((item) => {
+      const folderLower = (item.folder || "").toLowerCase();
+      return (
+        folderLower !== "creative product" &&
+        folderLower !== "creative_product" &&
+        item.sub !== "CREATIVE PRODUCT"
+      );
+    });
+  }
 
   const targetFolders = CATEGORY_MAP[category] || [];
   if (targetFolders.length === 0) {
