@@ -1,8 +1,8 @@
-import { useEffect, useRef, useState } from "react";
+import { memo, useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import LazyImage from "../UI/LazyImage";
 
-export default function GalleryCard({ item, onOpen }) {
+function GalleryCard({ item, onOpen }) {
   const isVideo = item ? (item.kind || item.type) === "video" : false;
   const ref = useRef(null);
 
@@ -134,7 +134,7 @@ export default function GalleryCard({ item, onOpen }) {
         duration: 0.45,
         ease: "easeOut",
       }}
-      className="mb-4 break-inside-avoid-column cursor-pointer overflow-hidden rounded-lg"
+      className="mb-4 break-inside-avoid-column cursor-pointer overflow-hidden rounded-lg group"
       role="button"
       tabIndex={0}
       onClick={() => onOpen?.()}
@@ -146,13 +146,13 @@ export default function GalleryCard({ item, onOpen }) {
             <LazyImage
               loader={item.posterLoader}
               alt={item.alt || item.name || "Gallery video"}
-              className="block w-full h-auto object-cover transition-transform duration-700 hover:scale-[1.03]"
+              className="block w-full h-auto object-cover transition-transform duration-700 group-hover:scale-[1.04]"
             />
           ) : posterData ? (
             <img
               src={posterData}
               alt={item.alt || item.name || "Gallery video"}
-              className="block w-full h-auto object-cover transition-transform duration-700 hover:scale-[1.03]"
+              className="block w-full h-auto object-cover transition-transform duration-700 group-hover:scale-[1.04]"
             />
           ) : (
             <div className="flex h-56 w-full items-center justify-center bg-neutral-200">
@@ -167,18 +167,18 @@ export default function GalleryCard({ item, onOpen }) {
           <LazyImage
             loader={item?.loader}
             alt={item.alt || item.name || "Gallery image"}
-            className="block w-full h-auto object-cover transition-transform duration-700 hover:scale-[1.03]"
+            className="block w-full h-auto object-cover transition-transform duration-700 group-hover:scale-[1.04]"
           />
         )}
 
         {isVideo && (
           <>
-            <div className="absolute top-3 left-3 bg-black/60 px-2 py-1 text-[10px] font-medium tracking-[0.25em] text-white uppercase">
+            <div className="absolute top-3 left-3 bg-black/60 px-2 py-1 text-[10px] font-medium tracking-[0.25em] text-white uppercase rounded">
               FILM
             </div>
 
             <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
-              <div className="flex h-16 w-16 items-center justify-center rounded-full bg-black/40 backdrop-blur-sm">
+              <div className="flex h-16 w-16 items-center justify-center rounded-full bg-black/40 backdrop-blur-sm group-hover:scale-110 group-hover:bg-black/60 transition-all">
                 <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
                   <path d="M8 5v14l11-7L8 5z" fill="white" />
                 </svg>
@@ -190,3 +190,5 @@ export default function GalleryCard({ item, onOpen }) {
     </motion.div>
   );
 }
+
+export default memo(GalleryCard);

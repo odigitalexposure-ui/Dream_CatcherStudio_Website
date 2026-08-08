@@ -1,21 +1,46 @@
-﻿@import "tailwindcss";
+@import "tailwindcss";
 
-:root { --base-bg: #f5f4ef; --text-primary: #111827; --text-muted: #374151; }
-html, body, #root { height: 100%; }
+:root { 
+  --base-bg: #f5f4ef; 
+  --text-primary: #111827; 
+  --text-muted: #374151; 
+}
+
+html, body, #root { 
+  height: 100%; 
+}
+
+* {
+  font-family: 'Plus Jakarta Sans', 'Outfit', sans-serif;
+}
+
 body {
   background-color: var(--base-bg);
   color: var(--text-primary);
-  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+  font-family: 'Plus Jakarta Sans', 'Outfit', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Font utilities */
-.font-heading { font-family: 'Playfair Display', serif; }
-.font-body { font-family: 'Inter', ui-sans-serif, system-ui, sans-serif; }
+/* Global Font Overrides */
+.font-logo { 
+  font-family: 'Britannic FS Bold', 'Britannic Bold', 'Britannic', 'Syne', sans-serif !important; 
+  font-weight: 700; 
+}
+
+.font-heading, 
+.font-serif, 
+.font-body, 
+h1, h2, h3, h4, h5, h6, 
+p, span, a, button, input, select, textarea {
+  font-family: 'Plus Jakarta Sans', 'Outfit', sans-serif;
+}
 
 /* Utility for glass navbar backdrop */
-.bg-glass { background-color: rgba(255,255,255,0.72); backdrop-filter: blur(8px); }
+.bg-glass { 
+  background-color: rgba(255,255,255,0.72); 
+  backdrop-filter: blur(8px); 
+}
 
 html {
   scroll-behavior: smooth;

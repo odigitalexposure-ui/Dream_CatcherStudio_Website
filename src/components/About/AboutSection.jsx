@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { Camera, FileVideoCamera, Package, MapPin } from 'lucide-react';
-import aboutImg from '../../assets/about_feature.png';
+import aboutImg from '../../assets/about_feature.jpg';
 
 const fadeUp = {
   hidden: { opacity: 0, y: 18 },
@@ -24,7 +24,7 @@ export default function AboutSection() {
             variants={fadeUp}
           >
             <div className="overflow-hidden rounded-2xl border border-[rgba(0,0,0,0.08)] lg:shadow-2xl shadow-lg transform transition-all duration-600 lg:hover:scale-105">
-              <img src={aboutImg} alt="About Dream Catcher Studio" className="w-full h-auto object-cover block" />
+              <img src={aboutImg} alt="About DreamCatcher Studio" className="w-full h-auto object-cover block" />
             </div>
           </motion.div>
 
@@ -36,7 +36,7 @@ export default function AboutSection() {
                   <span className="inline-block w-0.5 h-10 bg-[#B58A3C] mr-4 rounded"></span>
                 </div>
                 <motion.p variants={fadeUp} custom={1} className="text-xs tracking-widest uppercase text-[#B58A3C]">
-                  ABOUT DREAM CATCHER STUDIO
+                  ABOUT DREAMCATCHER STUDIO
                 </motion.p>
               </div>
 
@@ -46,7 +46,7 @@ export default function AboutSection() {
 
               <motion.div variants={fadeUp} custom={3} className="text-[#575757] space-y-5 max-w-[700px] lg:max-w-[720px]">
                 <p>
-                  Dream Catcher Studio transforms concepts into refined visual stories. Specializing in product and commercial photography, fashion editorials, and cinematic wedding films, our work blends creativity with meticulous lighting and premium production techniques.
+                  DreamCatcher Studio transforms concepts into refined visual stories. Specializing in product and commercial photography, fashion editorials, and cinematic wedding films, our work blends creativity with meticulous lighting and premium production techniques.
                 </p>
                 <p>
                   Using modern equipment — including professional cinema cameras, aerial drone systems and studio lighting — we deliver commercial-grade imagery and films that elevate brands and preserve moments with emotional clarity and technical excellence.

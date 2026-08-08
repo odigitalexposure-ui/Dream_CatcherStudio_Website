@@ -37,38 +37,11 @@ export default function GalleryHeader({
   return (
     <header className="w-full bg-[#E9E6DD]">
       <div className="max-w-[1700px] mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 pt-24 sm:pt-28 md:pt-32 pb-6 sm:pb-8 lg:pb-10">
-        <div className="flex items-center justify-between">
-          {/* Logo / Title */}
-          <h1
-            style={{
-              fontFamily: "Cormorant Garamond, serif",
-            }}
-            className="
-              text-[#565656]
-              uppercase
-              font-light
-              tracking-[0.18em]
-              sm:tracking-[0.22em]
-              md:tracking-[0.28em]
-              lg:tracking-[0.35em]
-              leading-none
-              text-lg
-              xs:text-xl
-              sm:text-2xl
-              md:text-3xl
-              lg:text-[38px]
-              xl:text-[46px]
-              2xl:text-[52px]
-              max-w-[65%]
-              lg:max-w-none
-              break-words
-            "
-          >
-            Dream Catcher Studio
-          </h1>
+        <div className="flex items-center justify-center w-full mx-auto text-center">
+          {/* Filter Navigation */}
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-5 lg:gap-8 xl:gap-12 2xl:gap-16">
+          <nav className="hidden md:flex items-center justify-center gap-6 sm:gap-8 lg:gap-12 xl:gap-16 mx-auto text-center">
             {menuItems.map((menu) => {
               const active = isParentActive(menu);
 

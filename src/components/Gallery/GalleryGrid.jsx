@@ -8,7 +8,7 @@ export default function GalleryGrid({ items, onOpen }) {
       {/* Editorial masonry using CSS columns */}
       <div className="columns-1 xs:columns-2 sm:columns-2 md:columns-3 lg:columns-3 xl:columns-4 gap-3 sm:gap-4 md:gap-6">
         {items.map((it, idx) => (
-          <GalleryCard key={idx} item={it} onOpen={() => onOpen(idx)} />
+          <GalleryCard key={it.id || it.path || idx} item={it} onOpen={() => onOpen(idx)} />
         ))}
       </div>
     </div>

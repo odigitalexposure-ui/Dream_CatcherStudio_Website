@@ -119,7 +119,7 @@ export default function GalleryModal({
               </div>
             )}
 
-            {!loading && mediaUrl && item.type === "video" && (
+            {!loading && mediaUrl && (item.kind === "video" || item.type === "video") && (
               <video
                 src={mediaUrl}
                 controls
@@ -128,7 +128,7 @@ export default function GalleryModal({
               />
             )}
 
-            {!loading && mediaUrl && item.type === "image" && (
+            {!loading && mediaUrl && (item.kind === "image" || item.type === "image" || (!item.kind && !item.type)) && (
               <img
                 src={mediaUrl}
                 alt={item.name || "modal"}

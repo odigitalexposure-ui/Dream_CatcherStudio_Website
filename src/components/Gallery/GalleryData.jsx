@@ -4,12 +4,10 @@ export const FILTERS = {
   ALL: {
     label: "ALL",
   },
-
   PORTRAIT: {
     label: "PORTRAIT",
     children: ["MATERNITY", "WEDDING & OTHERS", "FASHION", "EVENT"],
   },
-
   COMMERCIAL: {
     label: "COMMERCIAL",
     children: [
@@ -23,80 +21,143 @@ export const FILTERS = {
   },
 };
 
-// Detect Main Category from Folder Name
-function detectCategory(folder) {
-  folder = folder.toLowerCase();
+const CATEGORY_MAP = {
+  ALL: [],
+  PORTRAIT: ["Maternity", "Wedding&others", "Fashion", "Event"],
+  COMMERCIAL: [
+    "Before_After",
+    "Food",
+    "Graphic_Design_Manipulation",
+    "Jewellery",
+    "Videomaking",
+    "Creative_product",
+  ],
+  MATERNITY: ["Maternity"],
+  "WEDDING & OTHERS": ["Wedding&others"],
+  WEDDING: ["Wedding&others"],
+  FASHION: ["Fashion"],
+  EVENT: ["Event"],
+  JEWELLERY: ["Jewellery"],
+  FOOD: ["Food"],
+  VIDEOMAKING: ["Videomaking"],
+  "GRAPHIC DESIGN": ["Graphic_Design_Manipulation"],
+  "BEFORE & AFTER": ["Before_After"],
+  "CREATIVE PRODUCT": ["Creative_product"],
+};
 
+function detectCategory(folder) {
+  const lower = folder.toLowerCase();
   if (
-    folder.includes("maternity") ||
-    folder.includes("wedding") ||
-    folder.includes("fashion") ||
-    folder.includes("event")
+    lower.includes("maternity") ||
+    lower.includes("wedding") ||
+    lower.includes("fashion") ||
+    lower.includes("event")
   ) {
     return "PORTRAIT";
   }
-
   return "COMMERCIAL";
 }
 
-// Detect Sub Category from Folder Name
 function detectSubCategory(folder) {
-  folder = folder.toLowerCase();
-
-  if (folder.includes("maternity")) return "MATERNITY";
-  if (folder.includes("wedding")) return "WEDDING & OTHERS";
-  if (folder.includes("fashion")) return "FASHION";
-  if (folder.includes("event")) return "EVENT";
-  if (folder.includes("creative") || folder.includes("product")) {
-    return "CREATIVE PRODUCT";
-  }
-  if (folder.includes("jewellery")) return "JEWELLERY";
-  if (folder.includes("food")) return "FOOD";
-  if (folder.includes("videomaking")) return "VIDEOMAKING";
-  if (folder.includes("graphic")) return "GRAPHIC DESIGN";
-  if (folder.includes("before")) return "BEFORE & AFTER";
-
+  const lower = folder.toLowerCase();
+  if (lower.includes("maternity")) return "MATERNITY";
+  if (lower.includes("wedding")) return "WEDDING & OTHERS";
+  if (lower.includes("fashion")) return "FASHION";
+  if (lower.includes("event")) return "EVENT";
+  if (lower.includes("creative") || lower.includes("product")) return "CREATIVE PRODUCT";
+  if (lower.includes("jewellery")) return "JEWELLERY";
+  if (lower.includes("food")) return "FOOD";
+  if (lower.includes("videomaking")) return "VIDEOMAKING";
+  if (lower.includes("graphic")) return "GRAPHIC DESIGN";
+  if (lower.includes("before")) return "BEFORE & AFTER";
   return "ALL";
 }
 
 export function getGalleryAssets() {
-  // Import every image/video from assets and all subfolders
   const modules = import.meta.glob(
     "../../assets/**/*.{jpg,jpeg,png,webp,JPG,JPEG,PNG,WEBP,mp4,MP4}",
-    {
-      eager: false,
-    },
+    { eager: false }
   );
 
-  return Object.keys(modules)
-    .map((key, index) => {
-      const parts = key.split("/");
+  const keys = Object.keys(modules);
 
-      const folderName = parts[parts.length - 2];
-      const fileName = parts[parts.length - 1].toLowerCase();
+  const hasPosterFor = (key) => {
+    const base = key.replace(/\.[^/.]+$/, "");
+    const exts = [".webp", ".jpg", ".jpeg", ".png"];
+    const posterVariants = exts.flatMap((ext) => [
+      `${base}.poster${ext}`,
+      `${base}${ext}`,
+    ]);
+    for (const candidate of posterVariants) {
+      if (keys.includes(candidate)) return candidate;
+    }
+    return null;
+  };
 
-      // Ignore unwanted files
-      const ignore = ["logo", "icon", "favicon", "facebook", "instagram"].some(
-        (word) => fileName.includes(word),
-      );
+  const items = [];
 
-      if (ignore) return null;
+  keys.forEach((key, index) => {
+    const parts = key.split("/");
+    const fileName = parts[parts.length - 1].toLowerCase();
+    const folderName = parts.length >= 2 ? parts[parts.length - 2] : "";
 
-      return {
-        id: index,
-        name: fileName,
-        loader: modules[key],
-        kind: fileName.endsWith(".mp4") ? "video" : "image",
-        category: detectCategory(folderName),
-        sub: detectSubCategory(folderName),
-        folder: folderName,
-        alt: fileName.replace(/\.[^/.]+$/, "").replace(/[-_]/g, " "),
-      };
-    })
-    .filter(Boolean);
+    // Ignore non-portfolio assets, logo files, and posters as standalone cards
+    const ignore = [
+      "logo",
+      "icon",
+      "favicon",
+      "facebook",
+      "instagram",
+      "about_feature",
+      ".poster.",
+    ].some((word) => fileName.includes(word));
+
+    if (ignore) return;
+
+    const isVideo = fileName.endsWith(".mp4");
+    const posterKey = isVideo ? hasPosterFor(key) : null;
+
+    items.push({
+      id: `${folderName}-${fileName}-${index}`,
+      name: fileName,
+      path: key,
+      loader: modules[key],
+      posterLoader: posterKey ? modules[posterKey] : null,
+      kind: isVideo ? "video" : "image",
+      type: isVideo ? "video" : "image",
+      category: detectCategory(folderName),
+      sub: detectSubCategory(folderName),
+      folder: folderName,
+      alt: fileName.replace(/\.[^/.]+$/, "").replace(/[-_]/g, " "),
+    });
+  });
+
+  // Sort videos first for featured selection, then photos
+  items.sort((a, b) => (a.kind === "video" && b.kind !== "video" ? -1 : 1));
+
+  return items;
+}
+
+export function filterGalleryAssets(items, category) {
+  if (!category || category === "ALL") return items;
+
+  const targetFolders = CATEGORY_MAP[category] || [];
+  if (targetFolders.length === 0) {
+    return items.filter(
+      (item) => item.category === category || item.sub === category
+    );
+  }
+
+  return items.filter((item) => {
+    const itemPath = item.path.toLowerCase();
+    const itemFolder = item.folder.toLowerCase();
+    return targetFolders.some((folder) => {
+      const f = folder.toLowerCase();
+      return itemPath.includes(f) || itemFolder === f;
+    });
+  });
 }
 
 export function useGalleryAssets() {
   return useMemo(() => getGalleryAssets(), []);
 }
-

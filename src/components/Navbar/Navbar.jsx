@@ -40,15 +40,15 @@ export default function Navbar() {
         <button
           onClick={() => navigate("/")}
           className="flex items-center gap-3 group"
-          aria-label="Dream Catcher Studio Home"
+          aria-label="DreamCatcher Studio Home"
         >
           <img
             src={logoDark}
-            alt="Dream Catcher Studio"
-            className="w-10 h-10 md:w-12 md:h-12 object-contain rounded transition-transform group-hover:scale-105"
+            alt="DreamCatcher Studio"
+            className="h-12 xs:h-14 sm:h-16 md:h-16 lg:h-18 max-h-[72px] w-auto object-contain drop-shadow-sm transition-transform group-hover:scale-105"
           />
-          <span className="font-serif text-lg md:text-xl font-medium tracking-wider text-[#333] uppercase">
-            Dream Catcher
+          <span className="font-logo text-base xs:text-lg sm:text-xl md:text-2xl font-bold tracking-wider text-[#111] uppercase">
+            DREAMCATCHER
           </span>
         </button>
 
@@ -120,10 +120,10 @@ export default function Navbar() {
                     <img
                       src={logoDark}
                       alt="logo"
-                      className="w-10 h-10 object-contain rounded"
+                      className="h-16 xs:h-20 w-auto max-h-[72px] object-contain drop-shadow-sm"
                     />
-                    <span className="font-serif text-lg font-medium text-black uppercase tracking-wider">
-                      Dream Catcher
+                    <span className="font-serif text-xl font-bold text-black uppercase tracking-wider">
+                      DreamCatcher
                     </span>
                   </div>
                   <button

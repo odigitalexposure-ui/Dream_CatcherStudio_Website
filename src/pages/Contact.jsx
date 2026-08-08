@@ -58,10 +58,7 @@ ${form.message}
           </p>
 
           <h2
-            className="mt-4 text-4xl md:text-5xl lg:text-6xl font-light text-[#565656]"
-            style={{
-              fontFamily: "Cormorant Garamond, serif",
-            }}
+            className="mt-4 text-4xl md:text-5xl lg:text-6xl font-semibold text-[#565656]"
           >
             Contact Us
           </h2>
@@ -112,7 +109,7 @@ ${form.message}
                   <h4 className="font-semibold text-[#565656] mb-2">Phone</h4>
 
                   <a
-                    href="tel:+919330270619"
+                    href="tel:+918240481762"
                     className="text-neutral-600 hover:text-black transition"
                   >
                     +91 8240481762
@@ -131,10 +128,10 @@ ${form.message}
                   <h4 className="font-semibold text-[#565656] mb-2">Email</h4>
 
                   <a
-                    href="mailto:your@email.com"
+                    href="mailto:hello@dreamcatcher.studio"
                     className="text-neutral-600 hover:text-black transition"
                   >
-                    your@email.com
+                    hello@dreamcatcher.studio
                   </a>
                 </div>
               </div>

@@ -30,20 +30,11 @@ export default function Hero() {
           className="w-full max-w-3xl text-center"
         >
           <div className="w-full">
-            <motion.div
-              initial={{ opacity: 0, y: 18 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1, duration: 0.6, ease: "easeOut" }}
-              className="inline-flex items-center justify-center rounded-full border border-white/20 bg-white/10 px-4 sm:px-6 py-2 text-[0.65rem] sm:text-xs uppercase tracking-[0.25em] sm:tracking-[0.38em] text-white shadow-2xl backdrop-blur-xl mb-6 max-w-full"
-            >
-              Dream • Catcher • Studio
-            </motion.div>
-
             <motion.h1
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2, duration: 0.75, ease: "easeOut" }}
-              className="font-heading text-2xl xs:text-3xl sm:text-5xl md:text-6xl xl:text-7xl font-light leading-[1.15] tracking-tight text-white px-2"
+              transition={{ delay: 0.15, duration: 0.75, ease: "easeOut" }}
+              className="font-heading text-2xl xs:text-3xl sm:text-5xl md:text-6xl xl:text-6xl font-bold leading-[1.15] tracking-tight text-white px-2"
             >
               Visual Luxury for Brands, Fashion & Celebrations
             </motion.h1>
@@ -51,10 +42,10 @@ export default function Hero() {
             <motion.p
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3, duration: 0.75, ease: "easeOut" }}
-              className="mt-4 sm:mt-6 text-sm sm:text-base md:text-lg text-slate-100/90 leading-relaxed max-w-xl mx-auto px-4"
+              transition={{ delay: 0.25, duration: 0.75, ease: "easeOut" }}
+              className="font-body mt-4 sm:mt-6 text-sm sm:text-base md:text-lg font-normal text-slate-100/90 leading-relaxed max-w-xl mx-auto px-4"
             >
-              Dream Catcher Studio crafts premium product, fashion, wedding and
+              DreamCatcher Studio crafts premium product, fashion, wedding and
               event photography with cinematic video, aerial storytelling and
               commercial direction for luxury brands.
             </motion.p>
