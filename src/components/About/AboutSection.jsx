@@ -1,6 +1,40 @@
-import { motion } from 'framer-motion';
-import { Camera, FileVideoCamera, Package, MapPin, CheckCircle2 } from 'lucide-react';
-import aboutImg from '../../assets/about_feature.jpg';
+import { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Camera, Package, CheckCircle2, ChevronLeft, ChevronRight, Utensils, Award } from 'lucide-react';
+
+import fashionImg from '../../assets/Fashion/000A2486 copy.jpg';
+import jewelleryImg from '../../assets/Jewellery/_DSC1577 copy 2.jpg';
+import foodImg from '../../assets/Food/cake-with-tea-table copy.jpg';
+
+const showcaseSlides = [
+  {
+    id: 'fashion',
+    title: 'Fashion & High Editorial',
+    subtitle: 'Fashion Editorial | High-End Lighting',
+    tag: 'Fashion Shoot',
+    icon: Camera,
+    image: fashionImg,
+    alt: 'DREAMCATCHER Studio Fashion Editorial Photography',
+  },
+  {
+    id: 'jewellery',
+    title: 'Jewellery & Luxury Commercial',
+    subtitle: 'Luxury Commercial | Macro & Sparkle Detail',
+    tag: 'Jewellery & Lux',
+    icon: Package,
+    image: jewelleryImg,
+    alt: 'DREAMCATCHER Studio Luxury Jewellery Photography',
+  },
+  {
+    id: 'food',
+    title: 'Food & Culinary Styling',
+    subtitle: 'Commercial Food | Styling & Creative Lighting',
+    tag: 'Food & Culinary',
+    icon: Utensils,
+    image: foodImg,
+    alt: 'DREAMCATCHER Studio Food & Culinary Photography',
+  },
+];
 
 const fadeUp = {
   hidden: { opacity: 0, y: 20 },
@@ -12,6 +46,28 @@ const fadeUp = {
 };
 
 export default function AboutSection() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+
+  useEffect(() => {
+    if (!isAutoPlaying) return;
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % showcaseSlides.length);
+    }, 4500);
+    return () => clearInterval(interval);
+  }, [isAutoPlaying]);
+
+  const activeSlide = showcaseSlides[currentIndex];
+  const ActiveIcon = activeSlide.icon;
+
+  const nextSlide = () => {
+    setCurrentIndex((prev) => (prev + 1) % showcaseSlides.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentIndex((prev) => (prev - 1 + showcaseSlides.length) % showcaseSlides.length);
+  };
+
   return (
     <section className="relative w-full bg-[#F5F4EF] pt-24 sm:pt-28 md:pt-32 pb-16 md:pb-24 px-4 sm:px-6 md:px-12 lg:px-20 overflow-hidden">
       {/* Decorative Background Blur Circles */}
@@ -50,7 +106,7 @@ export default function AboutSection() {
 
         {/* MAIN CONTENT GRID (Equal Height Stretch) */}
         <div className="flex flex-col lg:flex-row items-stretch gap-10 lg:gap-14">
-          {/* Left Column: Image Showcase + Quality Checklist Under Image */}
+          {/* Left Column: Interactive Multi-Image Showcase + Quality Checklist */}
           <motion.div
             className="w-full lg:w-5/12 flex flex-col gap-6"
             initial="hidden"
@@ -59,24 +115,99 @@ export default function AboutSection() {
             custom={0}
             variants={fadeUp}
           >
-            {/* Image Showcase Card */}
-            <div className="relative group overflow-hidden rounded-2xl border border-black/10 shadow-xl bg-white p-3 transition-transform duration-500 hover:scale-[1.01]">
-              <div className="overflow-hidden rounded-xl">
-                <img
-                  src={aboutImg}
-                  alt="About DREAMCATCHER Studio"
-                  className="w-full h-auto object-cover block transition-transform duration-700 group-hover:scale-105"
-                />
-              </div>
+            {/* Category Filter Pills Above Image Card */}
+            <div className="flex items-center gap-1.5 sm:gap-2 overflow-x-auto pb-1 no-scrollbar">
+              {showcaseSlides.map((slide, idx) => (
+                <button
+                  key={slide.id}
+                  onClick={() => {
+                    setCurrentIndex(idx);
+                    setIsAutoPlaying(false);
+                  }}
+                  className={`px-3 py-1.5 rounded-full text-[11px] sm:text-xs font-semibold tracking-wider transition-all duration-300 flex items-center gap-1.5 whitespace-nowrap ${
+                    currentIndex === idx
+                      ? 'bg-[#1E1E1E] text-[#B58A3C] shadow-md border border-[#B58A3C]/40'
+                      : 'bg-white/70 text-[#575757] hover:bg-white hover:text-[#1E1E1E] border border-black/5'
+                  }`}
+                >
+                  <slide.icon size={13} className={currentIndex === idx ? 'text-[#B58A3C]' : 'text-[#81786F]'} />
+                  <span>{slide.tag}</span>
+                </button>
+              ))}
+            </div>
 
-              {/* Floating Quality Badge */}
-              <div className="absolute bottom-6 right-6 bg-[#1E1E1E]/90 backdrop-blur-md border border-white/20 text-white px-5 py-3 rounded-xl shadow-2xl flex items-center gap-3">
-                <div className="p-2 rounded-lg bg-[#B58A3C] text-white">
-                  <Camera size={18} />
+            {/* Image Showcase Card with Carousel & Floating Badges */}
+            <div
+              className="relative group overflow-hidden rounded-2xl border border-black/10 shadow-xl bg-white p-3 transition-transform duration-500 hover:scale-[1.01]"
+              onMouseEnter={() => setIsAutoPlaying(false)}
+              onMouseLeave={() => setIsAutoPlaying(true)}
+            >
+              <div className="relative overflow-hidden rounded-xl aspect-[4/3] bg-black/90">
+                <AnimatePresence mode="wait">
+                  <motion.img
+                    key={activeSlide.id}
+                    src={activeSlide.image}
+                    alt={activeSlide.alt}
+                    initial={{ opacity: 0, scale: 1.06 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.98 }}
+                    transition={{ duration: 0.7, ease: 'easeOut' }}
+                    className="w-full h-full object-cover block"
+                  />
+                </AnimatePresence>
+
+                {/* Subtle Gradient Overlays for Readability & Depth */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/30 pointer-events-none" />
+
+                {/* Left & Right Arrow Controls (Visible on Hover) */}
+                <button
+                  onClick={prevSlide}
+                  className="absolute left-3 top-1/2 -translate-y-1/2 p-2 rounded-full bg-black/50 hover:bg-[#B58A3C] text-white backdrop-blur-sm transition-all duration-300 opacity-0 group-hover:opacity-100 transform -translate-x-2 group-hover:translate-x-0"
+                  aria-label="Previous showcase image"
+                >
+                  <ChevronLeft size={18} />
+                </button>
+                <button
+                  onClick={nextSlide}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 p-2 rounded-full bg-black/50 hover:bg-[#B58A3C] text-white backdrop-blur-sm transition-all duration-300 opacity-0 group-hover:opacity-100 transform translate-x-2 group-hover:translate-x-0"
+                  aria-label="Next showcase image"
+                >
+                  <ChevronRight size={18} />
+                </button>
+
+                {/* Top Badge: Slide Counter & Tag */}
+                <div className="absolute top-3 left-3 bg-black/60 backdrop-blur-md border border-white/10 text-white text-[10px] font-semibold tracking-widest uppercase px-2.5 py-1 rounded-md flex items-center gap-1.5">
+                  <span className="text-[#B58A3C]">0{currentIndex + 1}</span> / 0{showcaseSlides.length}
                 </div>
-                <div>
-                  <div className="text-xs font-bold uppercase tracking-wider text-amber-200">Commercial Grade</div>
-                  <div className="text-[11px] text-gray-300">Photography &amp; Films</div>
+
+                {/* Floating Quality Badge - Bottom Right */}
+                <div className="absolute bottom-4 right-4 max-w-[85%] bg-[#1E1E1E]/95 backdrop-blur-md border border-white/20 text-white px-4 py-2.5 rounded-xl shadow-2xl flex items-center gap-3">
+                  <div className="p-2 rounded-lg bg-[#B58A3C] text-white flex-shrink-0">
+                    <ActiveIcon size={18} />
+                  </div>
+                  <div className="min-w-0">
+                    <div className="text-xs font-bold uppercase tracking-wider text-amber-200 truncate">
+                      {activeSlide.title}
+                    </div>
+                    <div className="text-[11px] text-gray-300 truncate">{activeSlide.subtitle}</div>
+                  </div>
+                </div>
+
+                {/* Bottom Slide Indicators (Dots) */}
+                <div className="absolute bottom-3 left-4 flex items-center gap-1.5 pointer-events-auto">
+                  {showcaseSlides.map((_, i) => (
+                    <button
+                      key={i}
+                      onClick={() => {
+                        setCurrentIndex(i);
+                        setIsAutoPlaying(false);
+                      }}
+                      className={`h-1.5 rounded-full transition-all duration-300 ${
+                        currentIndex === i ? 'w-6 bg-[#B58A3C]' : 'w-1.5 bg-white/50 hover:bg-white'
+                      }`}
+                      aria-label={`Go to slide ${i + 1}`}
+                    />
+                  ))}
                 </div>
               </div>
             </div>
@@ -91,16 +222,14 @@ export default function AboutSection() {
                   {[
                     'Professional Team',
                     'Creative Direction',
-                    'Cinematic Storytelling',
                     'High-End Equipment',
-                    'Drone Coverage',
                     'Fast Project Delivery',
                     'Premium Editing',
                     'Customer Satisfaction',
-                    '4K Cinema Production',
-                    'Lighting & Color Mastery',
                     'Studio & Outdoor Shoots',
+                    'Lighting & Color Mastery',
                     'Tailored Brand Styling',
+                    'Commercial Excellence',
                   ].map((t) => (
                     <div key={t} className="flex items-center gap-2.5 min-w-0">
                       <CheckCircle2 size={16} className="text-[#B58A3C] flex-shrink-0" />
@@ -118,64 +247,76 @@ export default function AboutSection() {
             </div>
           </motion.div>
 
-          {/* Right Column: Text & 4 Specialization Cards */}
+          {/* Right Column: Text & 3 Specialization Cards */}
           <div className="w-full lg:w-7/12 flex flex-col justify-between">
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.25 }}>
               <motion.div variants={fadeUp} custom={1} className="text-[#4F4F4F] space-y-4 text-base sm:text-lg lg:text-xl leading-relaxed">
                 <p>
-                  DREAMCATCHER Studio transforms concepts into refined visual stories. Specializing in product and commercial photography, fashion editorials, and cinematic wedding films, our work blends creativity with meticulous lighting and premium production techniques.
+                  DREAMCATCHER Studio transforms concepts into refined visual stories. Specializing in high-fashion editorials, luxury product &amp; jewellery photography, and creative culinary styling, our work blends artistic vision with meticulous studio lighting.
                 </p>
                 <p>
-                  Using modern equipment — including professional cinema cameras, aerial drone systems and studio lighting — we deliver commercial-grade imagery and films that elevate brands and preserve moments with emotional clarity and technical excellence.
+                  Using state-of-the-art camera systems, precision lenses, and professional studio lighting setups, we deliver commercial-grade imagery that elevates brand aesthetics and conveys timeless sophistication.
                 </p>
               </motion.div>
 
-              {/* 4 Specialization Cards (Enlarged Text & Height for Perfect Border Alignment) */}
-              <motion.div variants={fadeUp} custom={2} className="mt-8 lg:mt-10 grid grid-cols-1 sm:grid-cols-2 gap-5 lg:gap-6">
-                <div className="flex items-start gap-4 p-5 md:p-6 rounded-2xl border border-black/10 bg-white/80 backdrop-blur-sm shadow-md transition-all duration-300 hover:border-[#B58A3C]/50 hover:shadow-xl">
+              {/* 3 Specialization Cards */}
+              <motion.div variants={fadeUp} custom={2} className="mt-8 lg:mt-10 grid grid-cols-1 sm:grid-cols-3 gap-5 lg:gap-5">
+                <div
+                  onClick={() => {
+                    setCurrentIndex(0);
+                    setIsAutoPlaying(false);
+                  }}
+                  className={`cursor-pointer flex flex-col items-start gap-3 p-5 md:p-6 rounded-2xl border bg-white/80 backdrop-blur-sm shadow-md transition-all duration-300 hover:shadow-xl ${
+                    currentIndex === 0 ? 'border-[#B58A3C] ring-2 ring-[#B58A3C]/20' : 'border-black/10 hover:border-[#B58A3C]/50'
+                  }`}
+                >
                   <div className="p-3 rounded-xl bg-[#F5F4EF] text-[#B58A3C] flex-shrink-0">
-                    <Camera size={24} />
+                    <Camera size={22} />
                   </div>
                   <div>
-                    <h4 className="font-bold text-[#1E1E1E] text-base sm:text-lg">Photography</h4>
+                    <h4 className="font-bold text-[#1E1E1E] text-base sm:text-lg">Fashion &amp; Editorial</h4>
                     <p className="text-sm text-[#575757] mt-1.5 leading-relaxed">
-                      Professional photography for products, fashion, weddings, events, branding, and commercial campaigns.
+                      High-fashion editorial shoots, model lookbooks, portraiture, and studio lighting concepts.
                     </p>
                   </div>
                 </div>
 
-                <div className="flex items-start gap-4 p-5 md:p-6 rounded-2xl border border-black/10 bg-white/80 backdrop-blur-sm shadow-md transition-all duration-300 hover:border-[#B58A3C]/50 hover:shadow-xl">
+                <div
+                  onClick={() => {
+                    setCurrentIndex(1);
+                    setIsAutoPlaying(false);
+                  }}
+                  className={`cursor-pointer flex flex-col items-start gap-3 p-5 md:p-6 rounded-2xl border bg-white/80 backdrop-blur-sm shadow-md transition-all duration-300 hover:shadow-xl ${
+                    currentIndex === 1 ? 'border-[#B58A3C] ring-2 ring-[#B58A3C]/20' : 'border-black/10 hover:border-[#B58A3C]/50'
+                  }`}
+                >
                   <div className="p-3 rounded-xl bg-[#F5F4EF] text-[#B58A3C] flex-shrink-0">
-                    <FileVideoCamera size={24} />
+                    <Package size={22} />
                   </div>
                   <div>
-                    <h4 className="font-bold text-[#1E1E1E] text-base sm:text-lg">Video Production</h4>
+                    <h4 className="font-bold text-[#1E1E1E] text-base sm:text-lg">Jewellery &amp; Luxury</h4>
                     <p className="text-sm text-[#575757] mt-1.5 leading-relaxed">
-                      High-quality cinematic films, promotional videos, advertisements, documentaries, and corporate videos.
+                      Macro detail photography, luxury jewellery campaigns, and premium product presentation.
                     </p>
                   </div>
                 </div>
 
-                <div className="flex items-start gap-4 p-5 md:p-6 rounded-2xl border border-black/10 bg-white/80 backdrop-blur-sm shadow-md transition-all duration-300 hover:border-[#B58A3C]/50 hover:shadow-xl">
+                <div
+                  onClick={() => {
+                    setCurrentIndex(2);
+                    setIsAutoPlaying(false);
+                  }}
+                  className={`cursor-pointer flex flex-col items-start gap-3 p-5 md:p-6 rounded-2xl border bg-white/80 backdrop-blur-sm shadow-md transition-all duration-300 hover:shadow-xl ${
+                    currentIndex === 2 ? 'border-[#B58A3C] ring-2 ring-[#B58A3C]/20' : 'border-black/10 hover:border-[#B58A3C]/50'
+                  }`}
+                >
                   <div className="p-3 rounded-xl bg-[#F5F4EF] text-[#B58A3C] flex-shrink-0">
-                    <MapPin size={24} />
+                    <Utensils size={22} />
                   </div>
                   <div>
-                    <h4 className="font-bold text-[#1E1E1E] text-base sm:text-lg">Drone Cinematography</h4>
+                    <h4 className="font-bold text-[#1E1E1E] text-base sm:text-lg">Food &amp; Culinary</h4>
                     <p className="text-sm text-[#575757] mt-1.5 leading-relaxed">
-                      Breathtaking aerial visuals for weddings, events, tourism, real estate, and commercial productions.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4 p-5 md:p-6 rounded-2xl border border-black/10 bg-white/80 backdrop-blur-sm shadow-md transition-all duration-300 hover:border-[#B58A3C]/50 hover:shadow-xl">
-                  <div className="p-3 rounded-xl bg-[#F5F4EF] text-[#B58A3C] flex-shrink-0">
-                    <Package size={24} />
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-[#1E1E1E] text-base sm:text-lg">Commercial Specialist</h4>
-                    <p className="text-sm text-[#575757] mt-1.5 leading-relaxed">
-                      Premium product photography and advertising visuals that showcase products beautifully and drive engagement.
+                      Artistic food styling, restaurant menu visuals, and commercial culinary presentation.
                     </p>
                   </div>
                 </div>
@@ -214,3 +355,5 @@ export default function AboutSection() {
     </section>
   );
 }
+
+
