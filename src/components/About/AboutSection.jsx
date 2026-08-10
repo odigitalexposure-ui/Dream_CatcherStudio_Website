@@ -64,7 +64,7 @@ export default function AboutSection() {
               <div className="overflow-hidden rounded-xl">
                 <img
                   src={aboutImg}
-                  alt="About DreamCatcher Studio"
+                  alt="About DREAMCATCHER Studio"
                   className="w-full h-auto object-cover block transition-transform duration-700 group-hover:scale-105"
                 />
               </div>
@@ -85,7 +85,7 @@ export default function AboutSection() {
             <div className="flex-1 flex flex-col justify-between p-6 rounded-2xl border border-black/10 bg-white/80 backdrop-blur-sm shadow-md">
               <div>
                 <h5 className="text-xs font-bold uppercase tracking-[0.25em] text-[#B58A3C] mb-4">
-                  Why Choose DreamCatcher
+                  Why Choose DREAMCATCHER
                 </h5>
                 <div className="grid grid-cols-2 gap-3 text-xs sm:text-sm text-[#575757]">
                   {[
@@ -123,7 +123,7 @@ export default function AboutSection() {
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.25 }}>
               <motion.div variants={fadeUp} custom={1} className="text-[#4F4F4F] space-y-4 text-base sm:text-lg lg:text-xl leading-relaxed">
                 <p>
-                  DreamCatcher Studio transforms concepts into refined visual stories. Specializing in product and commercial photography, fashion editorials, and cinematic wedding films, our work blends creativity with meticulous lighting and premium production techniques.
+                  DREAMCATCHER Studio transforms concepts into refined visual stories. Specializing in product and commercial photography, fashion editorials, and cinematic wedding films, our work blends creativity with meticulous lighting and premium production techniques.
                 </p>
                 <p>
                   Using modern equipment — including professional cinema cameras, aerial drone systems and studio lighting — we deliver commercial-grade imagery and films that elevate brands and preserve moments with emotional clarity and technical excellence.

@@ -45,7 +45,7 @@ export default function Hero() {
               transition={{ delay: 0.25, duration: 0.75, ease: "easeOut" }}
               className="font-body mt-4 sm:mt-6 text-sm sm:text-base md:text-lg font-normal text-slate-100/90 leading-relaxed max-w-xl mx-auto px-4"
             >
-              DreamCatcher Studio crafts premium product, fashion, wedding and
+              DREAMCATCHER Studio crafts premium product, fashion, wedding and
               event photography with cinematic video, aerial storytelling and
               commercial direction for luxury brands.
             </motion.p>

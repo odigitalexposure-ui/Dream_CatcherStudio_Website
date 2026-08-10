@@ -2,7 +2,7 @@ import { Phone } from "lucide-react";
 
 export default function FloatingContactButtons() {
   const phone = "8240481762";
-  const defaultMsg = encodeURIComponent("Hello DreamCatcher Studio, I would like to inquire about your services.");
+  const defaultMsg = encodeURIComponent("Hello DREAMCATCHER Studio, I would like to inquire about your services.");
 
   return (
     <div className="fixed bottom-5 right-5 sm:bottom-7 sm:right-7 z-[9999] flex flex-col gap-3.5 items-end">
