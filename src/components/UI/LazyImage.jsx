@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 
-export default function LazyImage({ loader, src, alt = '', className = '', width, height }) {
+export default function LazyImage({ loader, src, alt = '', className = '', width, height, onLoad }) {
   const imgRef = useRef();
   const [inView, setInView] = useState(false);
   const [loadedUrl, setLoadedUrl] = useState(null);
@@ -57,7 +57,10 @@ export default function LazyImage({ loader, src, alt = '', className = '', width
           key={activeUrl}
           src={activeUrl}
           alt={alt}
-          onLoad={() => setLoaded(true)}
+          onLoad={(e) => {
+            setLoaded(true);
+            onLoad?.(e);
+          }}
           initial={{ opacity: 0, scale: 1.02 }}
           animate={loaded ? { opacity: 1, scale: 1 } : {}}
           transition={{ duration: 0.5, ease: 'easeOut' }}

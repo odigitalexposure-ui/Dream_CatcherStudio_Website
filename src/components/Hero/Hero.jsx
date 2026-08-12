@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import heroVideo from "../../assets/Jewellery/1.mp4";
+import heroVideo from "../../assets/HomeHeroBackground vedio.mp4";
 
 export default function Hero() {
   return (

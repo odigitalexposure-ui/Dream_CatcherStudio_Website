@@ -2,7 +2,7 @@ import { memo, useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import LazyImage from "../UI/LazyImage";
 
-function GalleryCard({ item, onOpen }) {
+function GalleryCard({ item, onOpen, onMeasure }) {
   const isVideo = item ? (item.kind || item.type) === "video" : false;
   const ref = useRef(null);
 
@@ -168,6 +168,12 @@ function GalleryCard({ item, onOpen }) {
             loader={item?.loader}
             alt={item.alt || item.name || "Gallery image"}
             className="block w-full h-auto object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+            onLoad={(e) => {
+              if (e?.target?.naturalWidth && e?.target?.naturalHeight) {
+                const aspect = e.target.naturalWidth / e.target.naturalHeight;
+                onMeasure?.(item.id || item.path, aspect);
+              }
+            }}
           />
         )}
 
