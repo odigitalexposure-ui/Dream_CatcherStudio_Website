@@ -58,7 +58,7 @@ const fadeUp = {
   }),
 };
 
-export default function AboutSection() {
+export default function AboutSection({ showWeddingPortfolio = true }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
 
@@ -286,7 +286,7 @@ export default function AboutSection() {
             </div>
           </motion.div>
 
-          {/* Right Column: Text & 3 Specialization Cards */}
+          {/* Right Column: Text & 4 Specialization Cards */}
           <div className="w-full lg:w-7/12 flex flex-col justify-between">
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.25 }}>
               <motion.div variants={fadeUp} custom={1} className="text-[#4F4F4F] space-y-4 text-base sm:text-lg lg:text-xl leading-relaxed">
@@ -384,39 +384,43 @@ export default function AboutSection() {
           </div>
         </div>
 
-        {/* WEDDING & CELEBRATIONS GALLERY SECTION (Replaces old Explore Portfolio & Contact Us buttons) */}
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.15 }}
-          className="mt-16 pt-12 border-t border-black/10"
-        >
-          <div className="text-center mb-10">
-            <div className="inline-flex items-center gap-3 mb-3">
-              <span className="w-8 h-[1px] bg-[#B58A3C]" />
-              <span className="text-xs sm:text-sm font-semibold tracking-[0.3em] uppercase text-[#B58A3C]">
-                WEDDING &amp; CELEBRATIONS PORTFOLIO
-              </span>
-              <span className="w-8 h-[1px] bg-[#B58A3C]" />
-            </div>
-            <h3 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold text-[#1E1E1E] tracking-tight">
-              Capturing Timeless Moments &amp; Emotion-Filled Stories
-            </h3>
-          </div>
+        {/* WEDDING & CELEBRATIONS GALLERY SECTION (Displayed on About page, hidden on Home page) */}
+        {showWeddingPortfolio && (
+          <>
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.15 }}
+              className="mt-16 pt-12 border-t border-black/10"
+            >
+              <div className="text-center mb-10">
+                <div className="inline-flex items-center gap-3 mb-3">
+                  <span className="w-8 h-[1px] bg-[#B58A3C]" />
+                  <span className="text-xs sm:text-sm font-semibold tracking-[0.3em] uppercase text-[#B58A3C]">
+                    WEDDING &amp; CELEBRATIONS PORTFOLIO
+                  </span>
+                  <span className="w-8 h-[1px] bg-[#B58A3C]" />
+                </div>
+                <h3 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold text-[#1E1E1E] tracking-tight">
+                  Capturing Timeless Moments &amp; Emotion-Filled Stories
+                </h3>
+              </div>
 
-          {/* ALL WEDDING PHOTOS GRID */}
-          <GalleryGrid items={weddingItems} onOpen={(idx) => openWeddingAt(idx)} />
-        </motion.div>
+              {/* ALL WEDDING PHOTOS GRID */}
+              <GalleryGrid items={weddingItems} onOpen={(idx) => openWeddingAt(idx)} />
+            </motion.div>
 
-        {/* LIGHTBOX MODAL FOR WEDDING GALLERY */}
-        <GalleryModal
-          open={weddingModalOpen}
-          items={weddingItems}
-          currentIndex={weddingCurrentIndex}
-          onClose={() => setWeddingModalOpen(false)}
-          onPrev={handlePrevWeddingModal}
-          onNext={handleNextWeddingModal}
-        />
+            {/* LIGHTBOX MODAL FOR WEDDING GALLERY */}
+            <GalleryModal
+              open={weddingModalOpen}
+              items={weddingItems}
+              currentIndex={weddingCurrentIndex}
+              onClose={() => setWeddingModalOpen(false)}
+              onPrev={handlePrevWeddingModal}
+              onNext={handleNextWeddingModal}
+            />
+          </>
+        )}
       </div>
     </section>
   );

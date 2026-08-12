@@ -17,7 +17,7 @@ export default function Home() {
         jsonLd={schemas}
       />
       <Hero />
-      <AboutSection />
+      <AboutSection showWeddingPortfolio={false} />
       <GallerySection />
       <Contact />
     </>
