@@ -134,7 +134,7 @@ export default function AboutSection({ showWeddingPortfolio = true }) {
           <motion.h2
             variants={fadeUp}
             custom={1}
-            className="font-heading text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-[42px] font-bold text-[#1E1E1E] tracking-tight leading-tight whitespace-normal sm:whitespace-nowrap max-w-full overflow-hidden text-ellipsis px-2"
+            className="font-heading text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-[42px] font-semibold text-[#1E1E1E] tracking-tight leading-tight whitespace-normal sm:whitespace-nowrap max-w-full overflow-hidden text-ellipsis px-2"
           >
             Crafting Luxurious Visual Stories for Brands &amp; Celebrations
           </motion.h2>
@@ -401,7 +401,7 @@ export default function AboutSection({ showWeddingPortfolio = true }) {
                   </span>
                   <span className="w-8 h-[1px] bg-[#B58A3C]" />
                 </div>
-                <h3 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold text-[#1E1E1E] tracking-tight">
+                <h3 className="font-heading text-2xl sm:text-3xl md:text-4xl font-semibold text-[#1E1E1E] tracking-tight">
                   Capturing Timeless Moments &amp; Emotion-Filled Stories
                 </h3>
               </div>

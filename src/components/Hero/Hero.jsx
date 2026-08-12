@@ -34,7 +34,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.15, duration: 0.75, ease: "easeOut" }}
-              className="font-heading text-2xl xs:text-3xl sm:text-5xl md:text-6xl xl:text-6xl font-bold leading-[1.15] tracking-tight text-white px-2"
+              className="font-heading text-2xl xs:text-3xl sm:text-5xl md:text-6xl xl:text-6xl font-smibold leading-[1.15] tracking-tight text-white px-2"
             >
               Visual Luxury for Brands, Fashion & Celebrations
             </motion.h1>

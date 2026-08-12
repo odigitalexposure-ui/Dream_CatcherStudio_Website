@@ -139,7 +139,7 @@ export default function Services() {
             <span className="w-8 h-[1px] bg-[#B58A3C]" />
           </div>
 
-          <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-[#1E1E1E] tracking-tight leading-tight">
+          <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-semibold text-[#1E1E1E] tracking-tight leading-tight">
             Explore Studio Services &amp; Miscellaneous Portfolio
           </h2>
 

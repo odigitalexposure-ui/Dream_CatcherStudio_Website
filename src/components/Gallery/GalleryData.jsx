@@ -141,16 +141,27 @@ export function getGalleryAssets() {
     });
   });
 
-  // Sort videos first for featured selection, then photos
-  items.sort((a, b) => (a.kind === "video" && b.kind !== "video" ? -1 : 1));
+  // Sort items:
+  // 1. Videos first (for featured hero selection)
+  // 2. Sort photos by filename in ascending order (natural alphanumeric sort: 1.jpg, 2.jpg, 10.jpg, a.jpg...)
+  items.sort((a, b) => {
+    if (a.kind === "video" && b.kind !== "video") return -1;
+    if (a.kind !== "video" && b.kind === "video") return 1;
+
+    return (a.name || "").localeCompare(b.name || "", undefined, {
+      numeric: true,
+      sensitivity: "base",
+    });
+  });
 
   return items;
 }
 
 export function filterGalleryAssets(items, category) {
+  let filtered = [];
   if (!category || category === "ALL") {
     // Exclude CREATIVE PRODUCT images from ALL section as requested
-    return items.filter((item) => {
+    filtered = items.filter((item) => {
       const folderLower = (item.folder || "").toLowerCase();
       return (
         folderLower !== "creative product" &&
@@ -158,21 +169,31 @@ export function filterGalleryAssets(items, category) {
         item.sub !== "CREATIVE PRODUCT"
       );
     });
+  } else {
+    const targetFolders = CATEGORY_MAP[category] || [];
+    if (targetFolders.length === 0) {
+      filtered = items.filter(
+        (item) => item.category === category || item.sub === category
+      );
+    } else {
+      filtered = items.filter((item) => {
+        const itemPath = item.path.toLowerCase();
+        const itemFolder = item.folder.toLowerCase();
+        return targetFolders.some((folder) => {
+          const f = folder.toLowerCase();
+          return itemPath.includes(f) || itemFolder === f;
+        });
+      });
+    }
   }
 
-  const targetFolders = CATEGORY_MAP[category] || [];
-  if (targetFolders.length === 0) {
-    return items.filter(
-      (item) => item.category === category || item.sub === category
-    );
-  }
-
-  return items.filter((item) => {
-    const itemPath = item.path.toLowerCase();
-    const itemFolder = item.folder.toLowerCase();
-    return targetFolders.some((folder) => {
-      const f = folder.toLowerCase();
-      return itemPath.includes(f) || itemFolder === f;
+  // Sort filtered photos by filename in ascending order (natural alphanumeric sort)
+  return [...filtered].sort((a, b) => {
+    if (a.kind === "video" && b.kind !== "video") return -1;
+    if (a.kind !== "video" && b.kind === "video") return 1;
+    return (a.name || "").localeCompare(b.name || "", undefined, {
+      numeric: true,
+      sensitivity: "base",
     });
   });
 }
