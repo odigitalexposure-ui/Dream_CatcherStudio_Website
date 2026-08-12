@@ -18,10 +18,34 @@ export default function GallerySection() {
     [allItems, selectedCategory]
   );
 
-  // Featured item selection: first video, or first item
+  // Featured item selection: first video, or preferred flagship wedding photo, or non-text photo
   const featured = useMemo(() => {
-    const videoItem = filteredItems.find((i) => i.kind === "video" || i.type === "video");
-    return videoItem || filteredItems[0] || null;
+    const videoItem = filteredItems.find(
+      (i) => i.kind === "video" || i.type === "video"
+    );
+    if (videoItem) return videoItem;
+
+    // Preferred featured photo candidates (widescreen HD 16:9 wedding photos for optimal header framing)
+    const preferredFeatured = filteredItems.find((i) => {
+      const name = (i.name || "").toLowerCase();
+      return (
+        name.includes("52333417") ||
+        name.includes("58571062") ||
+        name.includes("58589432") ||
+        name.includes("59203968") ||
+        name.includes("bg1a7475a") ||
+        name.includes("bg1a7341")
+      );
+    });
+
+    if (preferredFeatured) return preferredFeatured;
+
+    // Otherwise, pick the first image that is not the text/door image (29064137)
+    const nonDoorItem = filteredItems.find(
+      (i) => !(i.name || "").toLowerCase().includes("29064137")
+    );
+
+    return nonDoorItem || filteredItems[0] || null;
   }, [filteredItems]);
 
   const openAt = (index) => {

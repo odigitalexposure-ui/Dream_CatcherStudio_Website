@@ -17,7 +17,11 @@ export const FILTERS = {
       "GRAPHIC DESIGN",
       "BEFORE & AFTER",
       "CREATIVE PRODUCT",
+      "MISCELLANEOUS",
     ],
+  },
+  MISCELLANEOUS: {
+    label: "MISCELLANEOUS",
   },
 };
 
@@ -32,6 +36,8 @@ const CATEGORY_MAP = {
     "Videomaking",
     "CREATIVE PRODUCT",
     "Creative_product",
+    "Miscellaneous Photos",
+    "Miscellaneous",
   ],
   MATERNITY: ["Maternity"],
   "WEDDING & OTHERS": ["Wedding&others"],
@@ -44,6 +50,7 @@ const CATEGORY_MAP = {
   "GRAPHIC DESIGN": ["Graphic_Design_Manipulation"],
   "BEFORE & AFTER": ["Before_After"],
   "CREATIVE PRODUCT": ["CREATIVE PRODUCT", "Creative_product"],
+  MISCELLANEOUS: ["Miscellaneous Photos", "Miscellaneous"],
 };
 
 function detectCategory(folder) {
@@ -71,6 +78,7 @@ function detectSubCategory(folder) {
   if (lower.includes("videomaking")) return "VIDEOMAKING";
   if (lower.includes("graphic")) return "GRAPHIC DESIGN";
   if (lower.includes("before")) return "BEFORE & AFTER";
+  if (lower.includes("miscellaneous")) return "MISCELLANEOUS";
   return "ALL";
 }
 

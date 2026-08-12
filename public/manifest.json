@@ -1,0 +1,18 @@
+{
+  "short_name": "DreamCatcher",
+  "name": "DreamCatcher Studio | Professional Photography & Visual Arts",
+  "description": "Premium photography studio specializing in high-fashion editorials, luxury jewellery campaigns, commercial food styling, and cinematic wedding photography in Kolkata and worldwide.",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "type": "image/svg+xml",
+      "sizes": "512x512 192x192 64x64 32x32 24x24 16x16"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#F5F4EF",
+  "theme_color": "#1E1E1E",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "categories": ["photography", "design", "portfolio", "business"]
+}

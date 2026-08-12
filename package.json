@@ -6,8 +6,9 @@
   "scripts": {
     "dev": "vite",
     "generate:video-posters": "node ./tools/generate-video-posters.js",
+    "generate:sitemap": "node ./tools/generate-sitemap.js",
     "compress:assets": "node ./tools/compress-assets.js",
-    "build": "npm run generate:video-posters && vite build",
+    "build": "npm run generate:video-posters && npm run generate:sitemap && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
     "test": "vitest"

@@ -1,7 +1,12 @@
 import { useState } from "react";
 import { MapPin, Phone, Mail, Clock, Send } from "lucide-react";
+import SEO from "../components/SEO/SEO";
+import { getBreadcrumbSchema, getLocalBusinessSchema } from "../components/SEO/schemas";
 
 export default function Contact() {
+  const breadcrumb = getBreadcrumbSchema([{ name: "Contact Us", url: "/contact" }]);
+  const schemas = [getLocalBusinessSchema(), breadcrumb];
+
   const [form, setForm] = useState({
     name: "",
     phone: "",
@@ -48,7 +53,14 @@ ${form.message}
   };
 
   return (
-    <section className="bg-[#F8F5F0] pt-24 sm:pt-28 md:pt-32 lg:pt-36 pb-16 md:pb-24">
+    <>
+      <SEO
+        title="Contact DreamCatcher Studio | Book Photography Shoot Kolkata"
+        description="Contact DreamCatcher Studio in Kolkata for fashion editorials, luxury jewellery campaigns, commercial food styling, or wedding photography bookings. Call or WhatsApp +91 8240481762."
+        keywords="contact photography studio Kolkata, book fashion shoot, jewellery photographer contact, wedding photography booking Kolkata"
+        jsonLd={schemas}
+      />
+      <section className="bg-[#F8F5F0] pt-24 sm:pt-28 md:pt-32 lg:pt-36 pb-16 md:pb-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10">
         {/* Heading */}
 
@@ -256,5 +268,6 @@ ${form.message}
         </div>
       </div>
     </section>
+    </>
   );
 }

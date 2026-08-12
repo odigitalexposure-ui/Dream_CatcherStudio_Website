@@ -1,10 +1,14 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Camera, Package, CheckCircle2, ChevronLeft, ChevronRight, Utensils, Award } from 'lucide-react';
+import { Camera, Package, CheckCircle2, ChevronLeft, ChevronRight, Utensils, Heart } from 'lucide-react';
+import { useGalleryAssets } from '../Gallery/GalleryData';
+import GalleryGrid from '../Gallery/GalleryGrid';
+import GalleryModal from '../Gallery/GalleryModal';
 
 import fashionImg from '../../assets/Fashion/000A2486 copy.jpg';
 import jewelleryImg from '../../assets/Jewellery/_DSC1577 copy 2.jpg';
 import foodImg from '../../assets/Food/cake-with-tea-table copy.jpg';
+import weddingImg from '../../assets/Wedding&others/52333417_2310816122285039_8403527024169189376_o.jpg';
 
 const showcaseSlides = [
   {
@@ -34,6 +38,15 @@ const showcaseSlides = [
     image: foodImg,
     alt: 'DREAMCATCHER Studio Food & Culinary Photography',
   },
+  {
+    id: 'wedding',
+    title: 'Wedding & Celebrations',
+    subtitle: 'Cinematic Wedding | Heritage & Rituals',
+    tag: 'Wedding & Couples',
+    icon: Heart,
+    image: weddingImg,
+    alt: 'DREAMCATCHER Studio Wedding & Celebrations Photography',
+  },
 ];
 
 const fadeUp = {
@@ -48,6 +61,32 @@ const fadeUp = {
 export default function AboutSection() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+
+  const allAssets = useGalleryAssets();
+  const [weddingModalOpen, setWeddingModalOpen] = useState(false);
+  const [weddingCurrentIndex, setWeddingCurrentIndex] = useState(0);
+
+  // Filter all images from Wedding&others folder together
+  const weddingItems = useMemo(() => {
+    return allAssets.filter((item) => {
+      const folderLower = (item.folder || '').toLowerCase();
+      return (
+        item.kind === 'image' &&
+        (folderLower.includes('wedding') || item.sub === 'WEDDING & OTHERS')
+      );
+    });
+  }, [allAssets]);
+
+  const openWeddingAt = (index) => {
+    setWeddingCurrentIndex(index);
+    setWeddingModalOpen(true);
+  };
+
+  const handlePrevWeddingModal = () =>
+    setWeddingCurrentIndex((c) => (c - 1 + weddingItems.length) % weddingItems.length);
+
+  const handleNextWeddingModal = () =>
+    setWeddingCurrentIndex((c) => (c + 1) % weddingItems.length);
 
   useEffect(() => {
     if (!isAutoPlaying) return;
@@ -259,24 +298,24 @@ export default function AboutSection() {
                 </p>
               </motion.div>
 
-              {/* 3 Specialization Cards */}
-              <motion.div variants={fadeUp} custom={2} className="mt-8 lg:mt-10 grid grid-cols-1 sm:grid-cols-3 gap-5 lg:gap-5">
+              {/* 4 Specialization Cards */}
+              <motion.div variants={fadeUp} custom={2} className="mt-8 lg:mt-10 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
                 <div
                   onClick={() => {
                     setCurrentIndex(0);
                     setIsAutoPlaying(false);
                   }}
-                  className={`cursor-pointer flex flex-col items-start gap-3 p-5 md:p-6 rounded-2xl border bg-white/80 backdrop-blur-sm shadow-md transition-all duration-300 hover:shadow-xl ${
+                  className={`cursor-pointer flex flex-col items-start gap-3 p-4 sm:p-5 rounded-2xl border bg-white/80 backdrop-blur-sm shadow-md transition-all duration-300 hover:shadow-xl ${
                     currentIndex === 0 ? 'border-[#B58A3C] ring-2 ring-[#B58A3C]/20' : 'border-black/10 hover:border-[#B58A3C]/50'
                   }`}
                 >
-                  <div className="p-3 rounded-xl bg-[#F5F4EF] text-[#B58A3C] flex-shrink-0">
-                    <Camera size={22} />
+                  <div className="p-2.5 rounded-xl bg-[#F5F4EF] text-[#B58A3C] flex-shrink-0">
+                    <Camera size={20} />
                   </div>
                   <div>
-                    <h4 className="font-bold text-[#1E1E1E] text-base sm:text-lg">Fashion &amp; Editorial</h4>
-                    <p className="text-sm text-[#575757] mt-1.5 leading-relaxed">
-                      High-fashion editorial shoots, model lookbooks, portraiture, and studio lighting concepts.
+                    <h4 className="font-bold text-[#1E1E1E] text-base">Fashion &amp; Editorial</h4>
+                    <p className="text-xs sm:text-sm text-[#575757] mt-1.5 leading-relaxed">
+                      High-fashion editorial shoots, model lookbooks, portraiture, and studio lighting.
                     </p>
                   </div>
                 </div>
@@ -286,16 +325,16 @@ export default function AboutSection() {
                     setCurrentIndex(1);
                     setIsAutoPlaying(false);
                   }}
-                  className={`cursor-pointer flex flex-col items-start gap-3 p-5 md:p-6 rounded-2xl border bg-white/80 backdrop-blur-sm shadow-md transition-all duration-300 hover:shadow-xl ${
+                  className={`cursor-pointer flex flex-col items-start gap-3 p-4 sm:p-5 rounded-2xl border bg-white/80 backdrop-blur-sm shadow-md transition-all duration-300 hover:shadow-xl ${
                     currentIndex === 1 ? 'border-[#B58A3C] ring-2 ring-[#B58A3C]/20' : 'border-black/10 hover:border-[#B58A3C]/50'
                   }`}
                 >
-                  <div className="p-3 rounded-xl bg-[#F5F4EF] text-[#B58A3C] flex-shrink-0">
-                    <Package size={22} />
+                  <div className="p-2.5 rounded-xl bg-[#F5F4EF] text-[#B58A3C] flex-shrink-0">
+                    <Package size={20} />
                   </div>
                   <div>
-                    <h4 className="font-bold text-[#1E1E1E] text-base sm:text-lg">Jewellery &amp; Luxury</h4>
-                    <p className="text-sm text-[#575757] mt-1.5 leading-relaxed">
+                    <h4 className="font-bold text-[#1E1E1E] text-base">Jewellery &amp; Luxury</h4>
+                    <p className="text-xs sm:text-sm text-[#575757] mt-1.5 leading-relaxed">
                       Macro detail photography, luxury jewellery campaigns, and premium product presentation.
                     </p>
                   </div>
@@ -306,17 +345,37 @@ export default function AboutSection() {
                     setCurrentIndex(2);
                     setIsAutoPlaying(false);
                   }}
-                  className={`cursor-pointer flex flex-col items-start gap-3 p-5 md:p-6 rounded-2xl border bg-white/80 backdrop-blur-sm shadow-md transition-all duration-300 hover:shadow-xl ${
+                  className={`cursor-pointer flex flex-col items-start gap-3 p-4 sm:p-5 rounded-2xl border bg-white/80 backdrop-blur-sm shadow-md transition-all duration-300 hover:shadow-xl ${
                     currentIndex === 2 ? 'border-[#B58A3C] ring-2 ring-[#B58A3C]/20' : 'border-black/10 hover:border-[#B58A3C]/50'
                   }`}
                 >
-                  <div className="p-3 rounded-xl bg-[#F5F4EF] text-[#B58A3C] flex-shrink-0">
-                    <Utensils size={22} />
+                  <div className="p-2.5 rounded-xl bg-[#F5F4EF] text-[#B58A3C] flex-shrink-0">
+                    <Utensils size={20} />
                   </div>
                   <div>
-                    <h4 className="font-bold text-[#1E1E1E] text-base sm:text-lg">Food &amp; Culinary</h4>
-                    <p className="text-sm text-[#575757] mt-1.5 leading-relaxed">
+                    <h4 className="font-bold text-[#1E1E1E] text-base">Food &amp; Culinary</h4>
+                    <p className="text-xs sm:text-sm text-[#575757] mt-1.5 leading-relaxed">
                       Artistic food styling, restaurant menu visuals, and commercial culinary presentation.
+                    </p>
+                  </div>
+                </div>
+
+                <div
+                  onClick={() => {
+                    setCurrentIndex(3);
+                    setIsAutoPlaying(false);
+                  }}
+                  className={`cursor-pointer flex flex-col items-start gap-3 p-4 sm:p-5 rounded-2xl border bg-white/80 backdrop-blur-sm shadow-md transition-all duration-300 hover:shadow-xl ${
+                    currentIndex === 3 ? 'border-[#B58A3C] ring-2 ring-[#B58A3C]/20' : 'border-black/10 hover:border-[#B58A3C]/50'
+                  }`}
+                >
+                  <div className="p-2.5 rounded-xl bg-[#F5F4EF] text-[#B58A3C] flex-shrink-0">
+                    <Heart size={20} />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-[#1E1E1E] text-base">Wedding &amp; Celebrations</h4>
+                    <p className="text-xs sm:text-sm text-[#575757] mt-1.5 leading-relaxed">
+                      Cinematic wedding photography, candid rituals, and timeless celebration storytelling.
                     </p>
                   </div>
                 </div>
@@ -325,35 +384,43 @@ export default function AboutSection() {
           </div>
         </div>
 
-        {/* BOTTOM CENTER-ALIGNED BUTTONS SECTION */}
+        {/* WEDDING & CELEBRATIONS GALLERY SECTION (Replaces old Explore Portfolio & Contact Us buttons) */}
         <motion.div
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.25 }}
-          className="mt-12 pt-8 border-t border-black/10"
+          viewport={{ once: true, amount: 0.15 }}
+          className="mt-16 pt-12 border-t border-black/10"
         >
-          <motion.div
-            variants={fadeUp}
-            custom={3}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4"
-          >
-            <a
-              href="/gallery"
-              className="w-full sm:w-auto inline-flex items-center justify-center px-8 py-3.5 rounded-full bg-[#1E1E1E] hover:bg-[#B58A3C] text-white text-xs uppercase tracking-[0.2em] font-semibold transition-all duration-300 shadow-lg transform hover:-translate-y-0.5"
-            >
-              Explore Portfolio
-            </a>
-            <a
-              href="/contact"
-              className="w-full sm:w-auto inline-flex items-center justify-center px-8 py-3.5 rounded-full border border-black/20 text-[#1E1E1E] hover:border-[#B58A3C] hover:text-[#B58A3C] text-xs uppercase tracking-[0.2em] font-semibold transition-all duration-300 transform hover:-translate-y-0.5"
-            >
-              Contact Us
-            </a>
-          </motion.div>
+          <div className="text-center mb-10">
+            <div className="inline-flex items-center gap-3 mb-3">
+              <span className="w-8 h-[1px] bg-[#B58A3C]" />
+              <span className="text-xs sm:text-sm font-semibold tracking-[0.3em] uppercase text-[#B58A3C]">
+                WEDDING &amp; CELEBRATIONS PORTFOLIO
+              </span>
+              <span className="w-8 h-[1px] bg-[#B58A3C]" />
+            </div>
+            <h3 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold text-[#1E1E1E] tracking-tight">
+              Capturing Timeless Moments &amp; Emotion-Filled Stories
+            </h3>
+          </div>
+
+          {/* ALL WEDDING PHOTOS GRID */}
+          <GalleryGrid items={weddingItems} onOpen={(idx) => openWeddingAt(idx)} />
         </motion.div>
+
+        {/* LIGHTBOX MODAL FOR WEDDING GALLERY */}
+        <GalleryModal
+          open={weddingModalOpen}
+          items={weddingItems}
+          currentIndex={weddingCurrentIndex}
+          onClose={() => setWeddingModalOpen(false)}
+          onPrev={handlePrevWeddingModal}
+          onNext={handleNextWeddingModal}
+        />
       </div>
     </section>
   );
 }
+
 
 
