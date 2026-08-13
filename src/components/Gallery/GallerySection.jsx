@@ -13,7 +13,7 @@ export default function GallerySection() {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   // Home Page Gallery Section: Use ONLY photos/images (no videos)
-  // AND filter out photos already displayed above on Home page in AboutSection
+  // AND filter out photos already displayed on Home page in AboutSection
   const imageOnlyItems = useMemo(() => {
     return allItems.filter((item) => {
       if (item.kind !== "image" || item.type !== "image") return false;
