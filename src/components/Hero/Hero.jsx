@@ -3,7 +3,7 @@ import heroVideo from "../../assets/HomeHeroBackground vedio.mp4";
 
 export default function Hero() {
   return (
-    <section className="relative w-full min-h-[85vh] sm:min-h-[90vh] lg:min-h-screen overflow-hidden flex items-center justify-center pt-20 sm:pt-24 md:pt-28 pb-12">
+    <section className="relative w-full h-[100dvh] min-h-[100dvh] sm:h-auto sm:min-h-[90vh] lg:min-h-screen overflow-hidden flex items-center justify-center pt-20 sm:pt-24 md:pt-28 pb-12">
       <motion.video
         src={heroVideo}
         autoPlay

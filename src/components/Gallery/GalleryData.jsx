@@ -82,7 +82,11 @@ function detectSubCategory(folder) {
   return "ALL";
 }
 
+let cachedGalleryAssets = null;
+
 export function getGalleryAssets() {
+  if (cachedGalleryAssets) return cachedGalleryAssets;
+
   const modules = import.meta.glob(
     "../../assets/**/*.{jpg,jpeg,png,webp,JPG,JPEG,PNG,WEBP,mp4,MP4}",
     { eager: false }
@@ -141,20 +145,51 @@ export function getGalleryAssets() {
     });
   });
 
-  // Sort items:
-  // 1. Videos first (for featured hero selection)
-  // 2. Sort photos by filename in ascending order (natural alphanumeric sort: 1.jpg, 2.jpg, 10.jpg, a.jpg...)
+  // Sort items by natural alphanumeric name order
   items.sort((a, b) => {
-    if (a.kind === "video" && b.kind !== "video") return -1;
-    if (a.kind !== "video" && b.kind === "video") return 1;
-
     return (a.name || "").localeCompare(b.name || "", undefined, {
       numeric: true,
       sensitivity: "base",
     });
   });
 
+  cachedGalleryAssets = items;
   return items;
+}
+
+/**
+ * Interleave videos organically among photos (e.g. 2 photos, 1 video, 1 photo, 1 video, 3 photos...)
+ * so videos are placed randomly/dynamically throughout the grid instead of all stacked at the top.
+ */
+export function interleaveVideosAndPhotos(items) {
+  const videos = items.filter((i) => i.kind === "video" || i.type === "video");
+  const photos = items.filter((i) => i.kind !== "video" && i.type !== "video");
+
+  if (videos.length === 0) return photos;
+  if (photos.length === 0) return videos;
+
+  // Natural varying gap pattern (2 photos, 1 photo, 3 photos, 2 photos, 4 photos, 1 photo...)
+  const gapPattern = [2, 1, 3, 2, 4, 1, 3, 2, 1, 3, 4, 2];
+
+  const result = [];
+  let videoIdx = 0;
+  let photoIdx = 0;
+  let patternIdx = 0;
+
+  while (photoIdx < photos.length || videoIdx < videos.length) {
+    const gap = gapPattern[patternIdx % gapPattern.length];
+    patternIdx++;
+
+    for (let i = 0; i < gap && photoIdx < photos.length; i++) {
+      result.push(photos[photoIdx++]);
+    }
+
+    if (videoIdx < videos.length) {
+      result.push(videos[videoIdx++]);
+    }
+  }
+
+  return result;
 }
 
 export function filterGalleryAssets(items, category) {
@@ -187,15 +222,16 @@ export function filterGalleryAssets(items, category) {
     }
   }
 
-  // Sort filtered photos by filename in ascending order (natural alphanumeric sort)
-  return [...filtered].sort((a, b) => {
-    if (a.kind === "video" && b.kind !== "video") return -1;
-    if (a.kind !== "video" && b.kind === "video") return 1;
+  // Sort photos and videos by natural alphanumeric order within their respective groups
+  const sorted = [...filtered].sort((a, b) => {
     return (a.name || "").localeCompare(b.name || "", undefined, {
       numeric: true,
       sensitivity: "base",
     });
   });
+
+  // Interleave videos and photos for dynamic, organic structural placement
+  return interleaveVideosAndPhotos(sorted);
 }
 
 export function useGalleryAssets() {

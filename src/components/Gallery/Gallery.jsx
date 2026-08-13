@@ -18,14 +18,26 @@ export default function GallerySection() {
     [allItems, selectedCategory]
   );
 
-  // Featured item selection: first video, or preferred flagship wedding photo, or non-text photo
+  // Featured item selection: HomeHeroBackground video for ALL section, DSC01221 for Portrait/Maternity, or video/flagship photo for other categories
   const featured = useMemo(() => {
+    if (!selectedCategory || selectedCategory === "ALL") {
+      const heroVideo = filteredItems.find((i) =>
+        (i.name || "").toLowerCase().includes("homeherobackground")
+      );
+      if (heroVideo) return heroVideo;
+    }
+
+    const dsc1221 = filteredItems.find((i) =>
+      (i.name || "").toLowerCase().includes("dsc01221")
+    );
+    if (dsc1221) return dsc1221;
+
     const videoItem = filteredItems.find(
       (i) => i.kind === "video" || i.type === "video"
     );
     if (videoItem) return videoItem;
 
-    // Preferred featured photo candidates (widescreen HD 16:9 wedding photos for optimal header framing)
+    // Preferred featured photo candidates (widescreen HD 16:9 photos for optimal header framing)
     const preferredFeatured = filteredItems.find((i) => {
       const name = (i.name || "").toLowerCase();
       return (
@@ -46,7 +58,7 @@ export default function GallerySection() {
     );
 
     return nonDoorItem || filteredItems[0] || null;
-  }, [filteredItems]);
+  }, [filteredItems, selectedCategory]);
 
   const openAt = (index) => {
     setCurrentIndex(index);

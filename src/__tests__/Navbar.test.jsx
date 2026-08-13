@@ -5,7 +5,7 @@ import Navbar from "../components/Navbar/Navbar";
 
 test("Navbar renders the correct links in order: Home, Gallery, About, Services, Contact", () => {
   render(
-    <MemoryRouter>
+    <MemoryRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
       <Navbar />
     </MemoryRouter>
   );

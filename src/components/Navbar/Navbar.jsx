@@ -39,15 +39,15 @@ export default function Navbar() {
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12 flex items-center justify-between">
         <button
           onClick={() => navigate("/")}
-          className="flex items-center gap-3 group"
+          className="flex items-center gap-3 group py-0.5"
           aria-label="DreamCatcher Studio Home"
         >
           <img
             src={logoDark}
             alt="DreamCatcher Studio"
-            className="h-12 xs:h-14 sm:h-16 md:h-16 lg:h-18 max-h-[72px] w-auto object-contain drop-shadow-sm transition-transform group-hover:scale-105"
+            className="h-16 xs:h-20 sm:h-20 md:h-22 lg:h-24 max-h-[88px] w-auto object-contain drop-shadow-[0_2px_6px_rgba(0,0,0,0.35)] transition-transform group-hover:scale-105 filter contrast-140 brightness-95 saturate-125"
           />
-          <span className="font-logo text-base xs:text-lg sm:text-xl md:text-2xl font-bold tracking-wider text-[#111] uppercase">
+          <span className="hidden md:inline-block font-logo text-lg sm:text-xl md:text-2xl lg:text-3xl font-extrabold tracking-wider text-[#000] uppercase drop-shadow-sm">
             DREAMCATCHER
           </span>
         </button>
