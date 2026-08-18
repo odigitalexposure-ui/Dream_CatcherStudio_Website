@@ -9,9 +9,9 @@ export default function About() {
   return (
     <>
       <SEO
-        title="About DreamCatcher Studio | Kolkata Premier Photography Studio"
-        description="Learn about DreamCatcher Studio's passion for visual storytelling. Our Kolkata studio brings high-fashion, luxury jewellery, commercial culinary styling, and wedding photography to life."
-        keywords="about DreamCatcher Studio, photography studio team Kolkata, commercial photographer Kolkata, luxury portrait studio"
+        title="About DREAMCATCHER Studio | Top Photographer in Rajpur & Sonarpur Kolkata"
+        description="Learn about DREAMCATCHER Studio, the premier photographer in Rajpur, Sonarpur & Kolkata. Specializing in best wedding photography, pre-wedding shoots in Kolkata, engagement photography in Rajpur, corporate events, and video editing services."
+        keywords="photographer in rajpur, photographer in sonarpur, best wedding photographer in kolkata, photography near me, engagement photography in rajpur, videography studio near me, pre-wedding shoots in kolkata"
         jsonLd={schemas}
       />
       <AboutSection />

@@ -11,9 +11,9 @@ export default function Home() {
   return (
     <>
       <SEO
-        title="DreamCatcher Studio | Professional Photography & Visual Arts | Kolkata"
-        description="DreamCatcher Studio is a premier photography studio in Kolkata specializing in high-fashion editorials, luxury jewellery campaigns, commercial food styling, and cinematic wedding photography."
-        keywords="photography studio Kolkata, fashion photography Kolkata, luxury jewellery photography, commercial food styling, wedding photographer Kolkata, professional studio shoots"
+        title="Best Wedding Photographer in Kolkata, Rajpur & Sonarpur | DREAMCATCHER Studio"
+        description="DREAMCATCHER Studio is the best wedding photographer in Kolkata, Rajpur & Sonarpur. Specializing in pre-wedding shoots, engagement photography in Rajpur, corporate events, product photography near me, and video editing services."
+        keywords="photographer in rajpur, photographer in sonarpur, best wedding photographer in kolkata, photography near me, video editing service in kolkata, videography studio near me, pre-wedding shoots in kolkata, engagement photography in rajpur, corporate events photography in kolkata, product photography near me"
         jsonLd={schemas}
       />
       <Hero />

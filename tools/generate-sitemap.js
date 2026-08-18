@@ -1,38 +1,38 @@
 import fs from 'fs';
 import path from 'path';
 
-const SITE_URL = 'https://dreamcatcherstudio.in';
+const SITE_URL = 'https://www.dreamcatcherstudio.co.in';
 
 const routes = [
   {
     url: '/',
     changefreq: 'weekly',
     priority: '1.0',
-    title: 'DreamCatcher Studio | Professional Photography & Visual Arts'
+    title: 'DREAMCATCHER Studio | Best Wedding Photographer in Kolkata, Rajpur & Sonarpur'
   },
   {
     url: '/about',
     changefreq: 'monthly',
     priority: '0.8',
-    title: 'About DreamCatcher Studio | Kolkata Photography Studio'
+    title: 'About DREAMCATCHER Studio | Top Photographer in Rajpur & Sonarpur Kolkata'
   },
   {
     url: '/gallery',
     changefreq: 'weekly',
     priority: '0.9',
-    title: 'Portfolio Gallery | DreamCatcher Studio'
+    title: 'Portfolio Showcase | Wedding, Pre-Wedding, Corporate & Product Photography'
   },
   {
     url: '/services',
     changefreq: 'monthly',
     priority: '0.8',
-    title: 'Photography Services | Fashion, Jewellery, Food & Weddings'
+    title: 'Services | Video Editing Service in Kolkata, Pre-Wedding Shoots & Corporate Events'
   },
   {
     url: '/contact',
     changefreq: 'monthly',
     priority: '0.7',
-    title: 'Contact Us | Book Photography Shoot at DreamCatcher Studio'
+    title: 'Contact DREAMCATCHER Studio | Book Videography Studio Near Me in Rajpur Sonarpur'
   }
 ];
 

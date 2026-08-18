@@ -55,9 +55,9 @@ ${form.message}
   return (
     <>
       <SEO
-        title="Contact DreamCatcher Studio | Book Photography Shoot Kolkata"
-        description="Contact DreamCatcher Studio in Kolkata for fashion editorials, luxury jewellery campaigns, commercial food styling, or wedding photography bookings. Call or WhatsApp +91 8240481762."
-        keywords="contact photography studio Kolkata, book fashion shoot, jewellery photographer contact, wedding photography booking Kolkata"
+        title="Contact DREAMCATCHER Studio | Book Videography Studio Near Me in Rajpur Sonarpur"
+        description="Contact DREAMCATCHER Studio in Rajpur Sonarpur, Kolkata. Book best wedding photography, pre-wedding shoots in Kolkata, engagement photography in Rajpur, corporate events, video editing services, or product photography near me. Call or WhatsApp +91 8240481762."
+        keywords="photographer in rajpur, photographer in sonarpur, best wedding photographer in kolkata, photography near me, video editing service in kolkata, videography studio near me, pre-wedding shoots in kolkata, engagement photography in rajpur, corporate events photography in kolkata, product photography near me"
         jsonLd={schemas}
       />
       <section className="bg-[#F8F5F0] pt-24 sm:pt-28 md:pt-32 lg:pt-36 pb-16 md:pb-24">

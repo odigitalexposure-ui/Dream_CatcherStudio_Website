@@ -18,42 +18,42 @@ const SERVICE_HIGHLIGHTS = [
   {
     id: "ALL",
     categoryKey: "ALL",
-    title: "All Work",
-    tag: "Miscellaneous",
+    title: "All Work Showcase",
+    tag: "Studio Portfolio",
     icon: Grid,
-    desc: "Complete collection across all visual studio disciplines",
-  },
-  {
-    id: "FASHION",
-    categoryKey: "FASHION",
-    title: "Fashion & Editorial",
-    tag: "Fashion & Models",
-    icon: Camera,
-    desc: "High-fashion editorials, lookbooks, & studio lighting",
-  },
-  {
-    id: "JEWELLERY",
-    categoryKey: "JEWELLERY",
-    title: "Jewellery & Luxury",
-    tag: "Macro Detail",
-    icon: Package,
-    desc: "Precision macro photography for fine gems & luxury products",
-  },
-  {
-    id: "FOOD",
-    categoryKey: "FOOD",
-    title: "Food & Culinary",
-    tag: "Gourmet Styling",
-    icon: Utensils,
-    desc: "Commercial food styling & mouthwatering restaurant visuals",
+    desc: "Photographer in Rajpur & Sonarpur - Complete visual collection",
   },
   {
     id: "WEDDING",
     categoryKey: "WEDDING & OTHERS",
-    title: "Wedding & Celebrations",
-    tag: "Wedding & Couples",
+    title: "Wedding & Pre-Wedding Shoots",
+    tag: "Kolkata & Rajpur",
     icon: Heart,
-    desc: "Timeless wedding, pre-wedding, & celebration photography",
+    desc: "Best wedding photographer in Kolkata, pre-wedding shoots & engagement photography in Rajpur",
+  },
+  {
+    id: "FASHION",
+    categoryKey: "FASHION",
+    title: "Videography & Video Editing",
+    tag: "Video Services",
+    icon: Camera,
+    desc: "Top video editing service in Kolkata & full videography studio near me",
+  },
+  {
+    id: "JEWELLERY",
+    categoryKey: "JEWELLERY",
+    title: "Product Photography Near Me",
+    tag: "Product & Macro",
+    icon: Package,
+    desc: "E-commerce product photography, luxury jewellery macro details & commercial styling",
+  },
+  {
+    id: "FOOD",
+    categoryKey: "FOOD",
+    title: "Corporate Events & Culinary",
+    tag: "Corporate & Food",
+    icon: Utensils,
+    desc: "Corporate events photography in Kolkata & gourmet restaurant menu styling",
   },
 ];
 
@@ -139,7 +139,7 @@ export default function Services() {
             <span className="w-8 h-[1px] bg-[#B58A3C]" />
           </div>
 
-          <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-semibold text-[#1E1E1E] tracking-tight leading-tight">
+          <h2 className="font-heading text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-[42px] font-semibold text-[#1E1E1E] tracking-tight leading-tight whitespace-normal sm:whitespace-nowrap max-w-full overflow-hidden text-ellipsis px-2">
             Explore Studio Services &amp; Miscellaneous Portfolio
           </h2>
 

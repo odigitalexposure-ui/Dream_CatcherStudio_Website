@@ -9,7 +9,7 @@ export default function FloatingContactButtons() {
       {/* Direct Call Button */}
       <a
         href={`tel:${phone}`}
-        aria-label="Call DreamCatcher Studio"
+        aria-label="Call DREAMCATCHER Studio"
         className="group relative flex h-12 w-12 sm:h-14 sm:w-14 items-center justify-center rounded-full bg-[#1E1E1E] text-white shadow-2xl transition-all duration-300 hover:scale-110 hover:bg-[#B58A3C]"
       >
         <Phone className="w-5 h-5 sm:w-6 sm:h-6" />

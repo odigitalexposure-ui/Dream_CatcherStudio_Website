@@ -3,32 +3,32 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://dreamcatcherstudio.in/</loc>
-    <lastmod>2026-08-13</lastmod>
+    <loc>https://www.dreamcatcherstudio.co.in/</loc>
+    <lastmod>2026-08-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://dreamcatcherstudio.in/about</loc>
-    <lastmod>2026-08-13</lastmod>
+    <loc>https://www.dreamcatcherstudio.co.in/about</loc>
+    <lastmod>2026-08-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://dreamcatcherstudio.in/gallery</loc>
-    <lastmod>2026-08-13</lastmod>
+    <loc>https://www.dreamcatcherstudio.co.in/gallery</loc>
+    <lastmod>2026-08-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://dreamcatcherstudio.in/services</loc>
-    <lastmod>2026-08-13</lastmod>
+    <loc>https://www.dreamcatcherstudio.co.in/services</loc>
+    <lastmod>2026-08-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://dreamcatcherstudio.in/contact</loc>
-    <lastmod>2026-08-13</lastmod>
+    <loc>https://www.dreamcatcherstudio.co.in/contact</loc>
+    <lastmod>2026-08-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>

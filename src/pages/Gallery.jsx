@@ -8,9 +8,9 @@ export default function Gallery() {
   return (
     <>
       <SEO
-        title="Portfolio Gallery | DreamCatcher Studio Photography"
-        description="Explore the photography portfolio of DreamCatcher Studio. Featuring high-fashion editorials, luxury macro jewellery, mouthwatering food styling, and wedding celebrations."
-        keywords="photography portfolio Kolkata, fashion gallery, jewellery photography portfolio, wedding photo showcase, food styling gallery"
+        title="Portfolio Showcase | Wedding, Pre-Wedding, Corporate & Product Photography"
+        description="Explore the photography and videography portfolio of DREAMCATCHER Studio. Featuring best wedding photography in Kolkata, pre-wedding shoots, engagement photography in Rajpur, corporate events, and product photography near me."
+        keywords="best wedding photographer in kolkata, pre-wedding shoots in kolkata, engagement photography in rajpur, corporate events photography in kolkata, product photography near me, videography studio near me"
         jsonLd={[breadcrumb]}
       />
       <GallerySection />

@@ -136,7 +136,7 @@ export default function AboutSection({ showWeddingPortfolio = true }) {
             custom={1}
             className="font-heading text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-[42px] font-semibold text-[#1E1E1E] tracking-tight leading-tight whitespace-normal sm:whitespace-nowrap max-w-full overflow-hidden text-ellipsis px-2"
           >
-            Crafting Luxurious Visual Stories for Brands &amp; Celebrations
+            Premier Photographer in Rajpur, Sonarpur &amp; Kolkata
           </motion.h2>
 
           {/* Decorative Center Accent Divider */}
@@ -291,10 +291,10 @@ export default function AboutSection({ showWeddingPortfolio = true }) {
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.25 }}>
               <motion.div variants={fadeUp} custom={1} className="text-[#4F4F4F] space-y-4 text-base sm:text-lg lg:text-xl leading-relaxed">
                 <p>
-                  DREAMCATCHER Studio transforms concepts into refined visual stories. Specializing in high-fashion editorials, luxury product &amp; jewellery photography, and creative culinary styling, our work blends artistic vision with meticulous studio lighting.
+                  DREAMCATCHER Studio is recognized as the best wedding photographer in Kolkata, operating out of our state-of-the-art studio in Rajpur Sonarpur. We specialize in cinematic wedding ceremonies, pre-wedding shoots in Kolkata, engagement photography in Rajpur, corporate events photography, 4K video editing services, and product photography near you.
                 </p>
                 <p>
-                  Using state-of-the-art camera systems, precision lenses, and professional studio lighting setups, we deliver commercial-grade imagery that elevates brand aesthetics and conveys timeless sophistication.
+                  Combining artistic visual direction, high-resolution cameras, drone videography, and master color grading, we craft stories that celebrate emotion, romance, and brand identity.
                 </p>
               </motion.div>
 

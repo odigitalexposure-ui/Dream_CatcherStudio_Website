@@ -1,14 +1,14 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
-const DEFAULT_SITE_URL = "https://dreamcatcherstudio.in";
-const DEFAULT_SITE_NAME = "DreamCatcher Studio";
-const DEFAULT_TITLE = "DreamCatcher Studio | Professional Photography & Visual Arts";
+const DEFAULT_SITE_URL = "https://www.dreamcatcherstudio.co.in";
+const DEFAULT_SITE_NAME = "DREAMCATCHER Studio";
+const DEFAULT_TITLE = "DREAMCATCHER Studio | Best Wedding & Commercial Photographer in Kolkata, Rajpur & Sonarpur";
 const DEFAULT_DESCRIPTION =
-  "Premium photography studio in Kolkata specializing in high-fashion editorials, luxury jewellery campaigns, commercial food styling, and cinematic wedding photography worldwide.";
+  "DREAMCATCHER Studio is the premier photography and videography studio in Kolkata, Rajpur & Sonarpur. Specializing in best wedding photography, pre-wedding shoots, engagement photography, corporate events, luxury product photography, and video editing services.";
 const DEFAULT_KEYWORDS =
-  "photography studio Kolkata, fashion photography Kolkata, luxury jewellery photography, food styling photography, wedding photographer Kolkata, commercial studio Kolkata, portfolio photography";
-const DEFAULT_IMAGE = "https://dreamcatcherstudio.in/logo_dark.png";
+  "photographer in rajpur, photographer in sonarpur, best wedding photographer in kolkata, photography near me, video editing service in kolkata, videography studio near me, pre-wedding shoots in kolkata, engagement photography in rajpur, corporate events photography in kolkata, product photography near me";
+const DEFAULT_IMAGE = "https://www.dreamcatcherstudio.co.in/logo_dark.png";
 
 export default function SEO({
   title = DEFAULT_TITLE,
@@ -57,7 +57,7 @@ export default function SEO({
     setMetaTag("name", "description", description);
     setMetaTag("name", "keywords", keywords);
     setMetaTag("name", "robots", "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1");
-    setMetaTag("name", "author", "DreamCatcher Studio");
+    setMetaTag("name", "author", "DREAMCATCHER Studio");
 
     // Geo Local SEO Meta Tags
     setMetaTag("name", "geo.region", "IN-WB");

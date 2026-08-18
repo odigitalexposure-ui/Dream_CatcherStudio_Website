@@ -4,22 +4,30 @@ import { getBreadcrumbSchema, getServiceSchema } from "../components/SEO/schemas
 
 export default function Services() {
   const breadcrumb = getBreadcrumbSchema([{ name: "Services", url: "/services" }]);
-  const fashionService = getServiceSchema(
-    "Fashion & Editorial Photography",
-    "High-fashion editorial shoots, model lookbooks, portraiture, and studio lighting concepts."
+  const weddingService = getServiceSchema(
+    "Best Wedding Photographer in Kolkata",
+    "Cinematic wedding photography, pre-wedding shoots in Kolkata, engagement photography in Rajpur, and traditional ceremony coverage."
   );
-  const jewelleryService = getServiceSchema(
-    "Jewellery & Luxury Photography",
-    "Macro detail photography, luxury jewellery campaigns, and premium product presentation."
+  const videoService = getServiceSchema(
+    "Video Editing Service in Kolkata & Videography Studio",
+    "Professional videography studio near me, 4K camera production, drone videography, and commercial video editing service in Kolkata."
+  );
+  const corporateService = getServiceSchema(
+    "Corporate Events Photography in Kolkata",
+    "Corporate event coverage, executive portraits, company launches, and commercial brand photography in Kolkata."
+  );
+  const productService = getServiceSchema(
+    "Product Photography Near Me & Macro Jewellery Shoots",
+    "Product photography near me, luxury jewellery macro details, e-commerce catalog shoots, and high-fashion editorials."
   );
 
   return (
     <>
       <SEO
-        title="Studio Services | Fashion, Jewellery, Food & Wedding Photography"
-        description="Professional photography studio services in Kolkata. High-fashion editorials, luxury macro jewellery photography, commercial culinary styling, and cinematic wedding coverage."
-        keywords="photography services Kolkata, fashion photo shoot, jewellery product photography, commercial food photography, wedding photography packages"
-        jsonLd={[breadcrumb, fashionService, jewelleryService]}
+        title="Services | Video Editing Service in Kolkata, Pre-Wedding Shoots & Corporate Events"
+        description="Explore top photography & videography services by DREAMCATCHER Studio. Offering video editing service in Kolkata, videography studio near me, pre-wedding shoots in Kolkata, engagement photography in Rajpur, corporate events photography, and product photography near me."
+        keywords="photographer in rajpur, photographer in sonarpur, best wedding photographer in kolkata, photography near me, video editing service in kolkata, videography studio near me, pre-wedding shoots in kolkata, engagement photography in rajpur, corporate events photography in kolkata, product photography near me"
+        jsonLd={[breadcrumb, weddingService, videoService, corporateService, productService]}
       />
       <ServiceSection />
     </>

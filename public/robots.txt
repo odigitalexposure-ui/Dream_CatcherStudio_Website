@@ -1,4 +1,4 @@
-# DreamCatcher Studio - Robots.txt
+# DREAMCATCHER Studio - Robots.txt
 User-agent: *
 Allow: /
 Disallow: /admin/
@@ -28,4 +28,4 @@ User-agent: Applebot
 Allow: /
 
 # Sitemap Location
-Sitemap: https://dreamcatcherstudio.in/sitemap.xml
+Sitemap: https://www.dreamcatcherstudio.co.in/sitemap.xml

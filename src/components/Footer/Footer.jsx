@@ -18,7 +18,7 @@ export default function Footer() {
           <div className="flex items-center gap-3 mb-4">
             <img src={logoLight} alt="logo" className="h-16 sm:h-20 md:h-24 w-auto max-h-[90px] object-contain rounded" />
             <div>
-              <div className="font-semibold">DreamCatcher Studio</div>
+              <div className="font-semibold">DREAMCATCHER Studio</div>
               <div className="text-sm text-neutral-300">
                 Photography • Wedding • Cinematography
               </div>
@@ -93,7 +93,7 @@ export default function Footer() {
       <div className="border-t border-neutral-800">
         <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-12 py-4 flex items-center justify-between text-sm text-neutral-400">
           <div>
-            © 2026 DreamCatcher Studio.
+            © 2026 DREAMCATCHER Studio.
             Designed & Developed by
             <a
               href="https://www.teamdeoskolkata.in/"

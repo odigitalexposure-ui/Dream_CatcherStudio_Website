@@ -1,4 +1,4 @@
-export const SITE_URL = "https://dreamcatcherstudio.in";
+export const SITE_URL = "https://www.dreamcatcherstudio.co.in";
 
 // 1. Photography Business / Local Business Schema
 export function getLocalBusinessSchema() {
@@ -6,33 +6,34 @@ export function getLocalBusinessSchema() {
     "@context": "https://schema.org",
     "@type": "PhotographyBusiness",
     "@id": `${SITE_URL}/#business`,
-    "name": "DreamCatcher Studio",
-    "alternateName": "DreamCatcher Photography Studio",
+    "name": "DREAMCATCHER Studio",
+    "alternateName": "DREAMCATCHER Photography & Videography Studio Kolkata",
     "url": SITE_URL,
     "logo": `${SITE_URL}/logo_dark.png`,
     "image": `${SITE_URL}/logo_dark.png`,
-    "description": "Premium photography studio in Kolkata specializing in high-fashion editorials, luxury jewellery campaigns, commercial food styling, and cinematic wedding photography worldwide.",
-    "telephone": "+919830000000",
-    "email": "contact@dreamcatcherstudio.in",
+    "description": "Premier photography and videography studio in Rajpur, Sonarpur, Kolkata specializing in best wedding photography, pre-wedding shoots, engagement photography, corporate events, video editing services, and product photography.",
+    "telephone": "+918240481762",
+    "email": "hello@dreamcatcher.studio",
     "priceRange": "₹₹-₹₹₹",
     "address": {
       "@type": "PostalAddress",
-      "addressLocality": "Kolkata",
+      "streetAddress": "A3, 736, Paschim Nischintapur, Boral",
+      "addressLocality": "Rajpur Sonarpur, Kolkata",
       "addressRegion": "West Bengal",
-      "postalCode": "700001",
+      "postalCode": "700154",
       "addressCountry": "IN"
     },
     "geo": {
       "@type": "GeoCoordinates",
-      "latitude": 22.5726,
-      "longitude": 88.3639
+      "latitude": 22.4415,
+      "longitude": 88.3756
     },
     "openingHoursSpecification": [
       {
         "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-        "opens": "09:30",
-        "closes": "20:00"
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+        "opens": "09:00",
+        "closes": "21:00"
       }
     ],
     "sameAs": [
@@ -42,8 +43,20 @@ export function getLocalBusinessSchema() {
     ],
     "areaServed": [
       {
+        "@type": "AdministrativeArea",
+        "name": "Rajpur"
+      },
+      {
+        "@type": "AdministrativeArea",
+        "name": "Sonarpur"
+      },
+      {
         "@type": "City",
         "name": "Kolkata"
+      },
+      {
+        "@type": "AdministrativeArea",
+        "name": "West Bengal"
       },
       {
         "@type": "Country",
@@ -52,34 +65,54 @@ export function getLocalBusinessSchema() {
     ],
     "hasOfferCatalog": {
       "@type": "OfferCatalog",
-      "name": "Photography Services",
+      "name": "Photography & Videography Services in Rajpur, Sonarpur & Kolkata",
       "itemListElement": [
         {
           "@type": "Offer",
           "itemOffered": {
             "@type": "Service",
-            "name": "Fashion & Editorial Photography"
+            "name": "Best Wedding Photography in Kolkata",
+            "description": "Cinematic wedding photography, traditional ceremonies, and luxury wedding visual storytelling in Kolkata and Rajpur Sonarpur."
           }
         },
         {
           "@type": "Offer",
           "itemOffered": {
             "@type": "Service",
-            "name": "Jewellery & Luxury Product Photography"
+            "name": "Pre-Wedding Shoots in Kolkata & Engagement Photography in Rajpur",
+            "description": "Creative outdoor pre-wedding concepts, engagement couple portraits, and cinematic couple shoot videos."
           }
         },
         {
           "@type": "Offer",
           "itemOffered": {
             "@type": "Service",
-            "name": "Food & Culinary Styling Photography"
+            "name": "Videography Studio & Video Editing Service in Kolkata",
+            "description": "Professional studio videography, 4K camera setup, aerial drone footage, reel editing, and commercial video editing services."
           }
         },
         {
           "@type": "Offer",
           "itemOffered": {
             "@type": "Service",
-            "name": "Wedding & Celebration Photography"
+            "name": "Corporate Events Photography in Kolkata",
+            "description": "Coverage of corporate events, brand launches, business summits, seminars, and executive portraiture."
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Product Photography Near Me & Macro Jewellery Shoots",
+            "description": "Commercial product photography, luxury jewellery macro details, e-commerce styling, and high-fashion editorials."
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Photographer in Rajpur & Sonarpur",
+            "description": "Top-rated local photography studio service in Rajpur, Sonarpur, Boral, and South Kolkata."
           }
         }
       ]
@@ -93,13 +126,13 @@ export function getOrganizationSchema() {
     "@context": "https://schema.org",
     "@type": "Organization",
     "@id": `${SITE_URL}/#organization`,
-    "name": "DreamCatcher Studio",
+    "name": "DREAMCATCHER Studio",
     "url": SITE_URL,
     "logo": `${SITE_URL}/logo_dark.png`,
-    "description": "High-end commercial and artistic photography studio specializing in fashion, jewellery, food, and wedding visual storytelling.",
+    "description": "High-end commercial, event, and wedding photography and videography studio based in Rajpur Sonarpur, Kolkata.",
     "contactPoint": {
       "@type": "ContactPoint",
-      "telephone": "+919830000000",
+      "telephone": "+918240481762",
       "contactType": "customer service",
       "areaServed": "IN",
       "availableLanguage": ["English", "Hindi", "Bengali"]
@@ -114,8 +147,8 @@ export function getWebSiteSchema() {
     "@type": "WebSite",
     "@id": `${SITE_URL}/#website`,
     "url": SITE_URL,
-    "name": "DreamCatcher Studio",
-    "description": "Official Website of DreamCatcher Studio - Fashion, Jewellery, Food & Wedding Photography",
+    "name": "DREAMCATCHER Studio",
+    "description": "Official Website of DREAMCATCHER Studio - Best Wedding Photographer, Videography & Product Photography Studio in Rajpur, Sonarpur, Kolkata.",
     "publisher": {
       "@id": `${SITE_URL}/#organization`
     }
@@ -154,9 +187,20 @@ export function getServiceSchema(serviceName, description) {
       "@id": `${SITE_URL}/#business`
     },
     "description": description,
-    "areaServed": {
-      "@type": "Country",
-      "name": "India"
-    }
+    "areaServed": [
+      {
+        "@type": "AdministrativeArea",
+        "name": "Rajpur"
+      },
+      {
+        "@type": "AdministrativeArea",
+        "name": "Sonarpur"
+      },
+      {
+        "@type": "City",
+        "name": "Kolkata"
+      }
+    ]
   };
 }
+

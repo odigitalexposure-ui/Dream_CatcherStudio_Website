@@ -40,11 +40,11 @@ export default function Navbar() {
         <button
           onClick={() => navigate("/")}
           className="flex items-center gap-3 group py-0.5"
-          aria-label="DreamCatcher Studio Home"
+          aria-label="DREAMCATCHER Studio Home"
         >
           <img
             src={logoDark}
-            alt="DreamCatcher Studio"
+            alt="DREAMCATCHER Studio"
             className="h-16 xs:h-20 sm:h-20 md:h-22 lg:h-24 max-h-[88px] w-auto object-contain drop-shadow-[0_2px_6px_rgba(0,0,0,0.35)] transition-transform group-hover:scale-105 filter contrast-140 brightness-95 saturate-125"
           />
           <span className="hidden md:inline-block font-logo text-lg sm:text-xl md:text-2xl lg:text-3xl font-extrabold tracking-wider text-[#000] uppercase drop-shadow-sm">
@@ -123,7 +123,7 @@ export default function Navbar() {
                       className="h-16 xs:h-20 w-auto max-h-[72px] object-contain drop-shadow-sm"
                     />
                     <span className="font-serif text-xl font-bold text-black uppercase tracking-wider">
-                      DreamCatcher
+                      DREAMCATCHER
                     </span>
                   </div>
                   <button
