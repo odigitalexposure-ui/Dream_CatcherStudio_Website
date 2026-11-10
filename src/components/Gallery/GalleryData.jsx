@@ -193,7 +193,7 @@ export function interleaveVideosAndPhotos(items) {
 }
 
 export function filterGalleryAssets(items, category) {
-  let filtered = [];
+  let filtered;
   if (!category || category === "ALL") {
     // Exclude CREATIVE PRODUCT images from ALL section as requested
     filtered = items.filter((item) => {

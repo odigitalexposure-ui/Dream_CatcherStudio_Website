@@ -17,8 +17,8 @@ export function getLocalBusinessSchema() {
     "priceRange": "₹₹-₹₹₹",
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "A3, 736, Paschim Nischintapur, Boral",
-      "addressLocality": "Rajpur Sonarpur, Kolkata",
+      "streetAddress": "A3, 736, beside Saral Dighi, Paschim Nischintapur, Boral",
+      "addressLocality": "Rajpur Sonarpur, Garia, Kolkata",
       "addressRegion": "West Bengal",
       "postalCode": "700154",
       "addressCountry": "IN"
@@ -36,7 +36,9 @@ export function getLocalBusinessSchema() {
         "closes": "21:00"
       }
     ],
+    "hasMap": "https://share.google/dgegV1871bsTtY3V9",
     "sameAs": [
+      "https://share.google/dgegV1871bsTtY3V9",
       "https://www.instagram.com/dreamcatcherstudio",
       "https://www.facebook.com/dreamcatcherstudio",
       "https://www.youtube.com/@dreamcatcherstudio"

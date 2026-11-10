@@ -1,4 +1,4 @@
-cls# Logs
+# Logs
 logs
 *.log
 npm-debug.log*
@@ -11,6 +11,10 @@ node_modules
 dist
 dist-ssr
 *.local
+
+# Scratch and temporary directories
+scratch/
+.qodo/
 
 # Editor directories and files
 .vscode/*

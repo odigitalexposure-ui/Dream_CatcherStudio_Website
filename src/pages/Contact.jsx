@@ -56,7 +56,7 @@ ${form.message}
     <>
       <SEO
         title="Contact DREAMCATCHER Studio | Book Videography Studio Near Me in Rajpur Sonarpur"
-        description="Contact DREAMCATCHER Studio in Rajpur Sonarpur, Kolkata. Book best wedding photography, pre-wedding shoots in Kolkata, engagement photography in Rajpur, corporate events, video editing services, or product photography near me. Call or WhatsApp +91 8240481762."
+        description="Contact DREAMCATCHER Studio in Rajpur Sonarpur, Garia, Kolkata. Book best wedding photography, pre-wedding shoots in Kolkata, engagement photography in Rajpur, corporate events, video editing services, or product photography near me. Call or WhatsApp +91 8240481762."
         keywords="photographer in rajpur, photographer in sonarpur, best wedding photographer in kolkata, photography near me, video editing service in kolkata, videography studio near me, pre-wedding shoots in kolkata, engagement photography in rajpur, corporate events photography in kolkata, product photography near me"
         jsonLd={schemas}
       />
@@ -103,9 +103,9 @@ ${form.message}
                   <h4 className="font-semibold text-[#565656] mb-2">Address</h4>
 
                   <p className="text-neutral-600 leading-7">
-                    A3, 736, Paschim Nischintapur, Boral,
+                    A3, 736, beside Saral Dighi, Paschim Nischintapur, Boral,
                     <br />
-                    Rajpur Sonarpur, Kolkata - 700154.
+                    Rajpur Sonarpur, Garia, Kolkata - 700154.
                   </p>
                 </div>
               </div>
