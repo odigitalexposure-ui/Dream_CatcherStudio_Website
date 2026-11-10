@@ -3,11 +3,11 @@ import { useLocation } from "react-router-dom";
 
 const DEFAULT_SITE_URL = "https://www.dreamcatcherstudio.co.in";
 const DEFAULT_SITE_NAME = "DREAMCATCHER Studio";
-const DEFAULT_TITLE = "DREAMCATCHER Studio | Best Wedding & Commercial Photographer in Kolkata, Rajpur & Sonarpur";
+const DEFAULT_TITLE = "DREAMCATCHER Studio | Best Wedding & Commercial Photographer in Garia, Kolkata, Rajpur & Sonarpur";
 const DEFAULT_DESCRIPTION =
-  "DREAMCATCHER Studio is the premier photography and videography studio in Kolkata, Rajpur & Sonarpur. Specializing in best wedding photography, pre-wedding shoots, engagement photography, corporate events, luxury product photography, and video editing services.";
+  "DREAMCATCHER Studio is the premier photography and videography studio in garia, Kolkata, Rajpur & Sonarpur. Specializing in best wedding photography, pre-wedding shoots, engagement photography, corporate events, luxury product photography, and video editing services.";
 const DEFAULT_KEYWORDS =
-  "photographer in rajpur, photographer in sonarpur, best wedding photographer in kolkata, photography near me, video editing service in kolkata, videography studio near me, pre-wedding shoots in kolkata, engagement photography in rajpur, corporate events photography in kolkata, product photography near me";
+  "photographer in rajpur, photographer in sonarpur, photographer in garia, best wedding photographer in kolkata, photography near me, video editing service in kolkata, videography studio near me, pre-wedding shoots in kolkata, engagement photography in rajpur, corporate events photography in kolkata, product photography near me";
 const DEFAULT_IMAGE = "https://www.dreamcatcherstudio.co.in/logo_dark.png";
 
 export default function SEO({
